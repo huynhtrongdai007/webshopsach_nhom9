@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Gamja+Flower");
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: Gamja Flower;
+}
+
+.name th{
+	font-size: 25px;
+	
+}
+
+.color-tim{
+	color:rgba(82,64,120,0.9)!important;
+}
+
+.table tr td {
+	font-size: 25px;
+}
+
+.avatar {
+	border-radius: 100%;
+	float: left;
+}
+
+.navbar {
+	background-color: rgba(82,64,120,0.9)!important;
+}
+
+.navbar-brand h4{
+	font-size: 20px;
+	color: #FFF;
+}
+
+.nav-link{
+	font-size: 20px;
+	color: #FFF;
+}
+
+.nav-link:hover{
+	font-size: 20px;
+	color: #FFF;
+}
+
+.khung {
+    border-radius: 100%;
+	margin-left: 120px;
+	margin-top: 90px;
+	width: 190px;
+	height: 190px;
+	text-align: center;
+	display: inline-block;
+	border: 5px solid #ccc;
+}
+
+.khung p{
+	font-size: 3rem;
+}
+
+.select{
+	border-radius: 100%;
+	width: 180px;
+	height: 180px;
+	cursor: pointer;
+
+}
+
+.select,.fa-user.fa-cogs.fa-book.fa-shopping-cart.fa-heart {
+	color: #c52d2f;
+	font-size: 70px;
+	line-height: 180px;
+}
+
+.select:hover{
+    transition-duration: 0.5s;
+	background-color: #c52d2f;
+}
+
+.fa-user.fa-cogs.fa-book.fa-shopping-cart.fa-newspaper,.select:hover{
+	transition-duration: 0.5s;
+	color: #FFF;
+}
+
+.select p:hover {
+	color: #000;
+}
+
+.select img{
+	width: 70px;
+}
+
+.select img:hover {
+	background-color: #FFF;
+	width: 70px;
+}
+
+
+footer {
+	font-size: 25px;
+	background-color: #3f3f3f;
+	color: #d5d5d5;
+}
+
+
+
+
+/*addproduct*/
+
+.form-add-product {
+	font-size: 20px;
+	padding: 5px 20px;
+
+}
+
+
+
+.form-add-product form table{
+  margin: 0 auto;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  width: 60%;
+ 
+}
+
+.form-add-product form table input{
+  margin:5px 10px;
+
+}
+
+.add-product {
+	font-size: 20px;
+}
