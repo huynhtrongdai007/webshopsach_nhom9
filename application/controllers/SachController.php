@@ -6,7 +6,7 @@ class SachController extends CI_Controller {
 
 // trang chu
 	public function Index() {
-		$this->load->view("web/Index");
+		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
 	}
 
 	public function About() {
@@ -18,8 +18,13 @@ class SachController extends CI_Controller {
 	}
 
 	public function Login() {
- 		$this->load->view("web/login");
+ 		$this->load->view("web/login",['header'=>'web/templates/header']);
+
+
 	}
+
+
+
 
 
 
@@ -33,7 +38,7 @@ class SachController extends CI_Controller {
 		$this->form_validation->set_rules("phone", "Phone" ,"required");
 		$this->form_validation->set_rules("password", "Password" ,"required");
 
-		if ($this->load->model("sachModel")) {
+		if ($this->load->model("SachModel")) {
 			$data = array(
 			"email"=>$this->input->post("email"),
 			"full_name"=>$this->input->post("full_name"),
@@ -45,7 +50,7 @@ class SachController extends CI_Controller {
 
 
 
-			$this->sachModel->Insert_User($data);
+			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
 		}else{
 			$this->signup();
@@ -74,8 +79,8 @@ class SachController extends CI_Controller {
 	// }
 
 	public function Product() {
-		$this->load->model("sachModel");
-		$data=$this->sachModel->GetProduct();
+		$this->load->model("SachModel");
+		$data=$this->SachModel->GetProduct();
 		$this->load->view("admin/product",['data'=>$data]);
 	}
 
@@ -111,7 +116,7 @@ class SachController extends CI_Controller {
 
 
 			$this->sachModel->insert_product($data);
-			redirect(base_url()."sachController/insertedAddProduct");
+			redirect(base_url()."SachController/insertedAddProduct");
 			$data['image']=$this->Upload_Image();
 		}else{
 			$this->AddProduct();
