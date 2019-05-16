@@ -22,7 +22,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/td01.jpg " alt="" width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -32,7 +32,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="<?=base_url();?>SachController/Product">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="<?=base_url();?>product.php">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -42,7 +42,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/thc02.jpg" alt="" width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -61,7 +61,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/td02.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -79,7 +79,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/td04.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -109,7 +109,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/thc01.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -119,7 +119,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="<?=base_url();?>SachController/Product">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="<?=base_url();?>product.php">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -129,7 +129,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/thc05.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -148,7 +148,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+												<a href="product.html"><img src="assets/dest/image/product/thc06.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -166,7 +166,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+												<a href="product.html"><img src="assets/dest/image/product/thc07.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -187,7 +187,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/thc09.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -207,7 +207,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+											<a href="product.html"><img src="assets/dest/image/product/thc10.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -226,7 +226,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+												<a href="product.html"><img src="assets/dest/image/product/thc11.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -244,7 +244,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="assets/dest/image/product/th03.jpg" alt=""></a>
+												<a href="product.html"><img src="assets/dest/image/product/thc12.jpg" alt=""width="300px" height="350px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
