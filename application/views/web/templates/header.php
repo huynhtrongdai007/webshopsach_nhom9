@@ -112,7 +112,7 @@
 						<li><a href="<?=base_url();?>Index.php">Trang chủ</a></li>
 						<li><a href="#">Sản phẩm</a>
 							<ul class="sub-menu">
-								<li><a href="product_type.html">Sản phẩm 1</a></li>
+								<li><a href="product_type.php ">Sản phẩm 1</a></li>
 								<li><a href="product_type.html">Sản phẩm 2</a></li>
 								<li><a href="product_type.html">Sản phẩm 4</a></li>
 							</ul>
