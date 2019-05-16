@@ -10,6 +10,9 @@ class SachController extends CI_Controller {
 		$data = $this->sachModel->getslide();
 		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','slide'=>'web/templates/slide','data'=>$data],);
 	}
+	public function Product() {
+		$this->load->view("web/product");
+	}
 
 	public function About() {
 		$this->load->view("web/about");
@@ -80,7 +83,7 @@ class SachController extends CI_Controller {
 	// 	$this->load->view("admin/product",['product'=>$data]);
 	// }
 
-	public function Product() {
+	public function Products() {
 		$this->load->model("SachModel");
 		$data=$this->SachModel->GetProduct();
 		$this->load->view("admin/product",['data'=>$data]);
