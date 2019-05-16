@@ -67,7 +67,7 @@
 
 								<div class="cart-item">
 									<div class="media">
-										<a class="pull-left" href="#"><img src="assets/dest/images/products/cart/2.png" alt=""></a>
+										<a class="pull-left" href="#"><img src="assets/dest/image/product/" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">Sample Woman Top</span>
 											<span class="cart-item-options">Size: XS; Colar: Navy</span>
@@ -112,9 +112,9 @@
 						<li><a href="<?=base_url();?>Index.php">Trang chủ</a></li>
 						<li><a href="#">Sản phẩm</a>
 							<ul class="sub-menu">
-								<li><a href="product_type.html">Sản phẩm 1</a></li>
-								<li><a href="product_type.html">Sản phẩm 2</a></li>
-								<li><a href="product_type.html">Sản phẩm 4</a></li>
+								<li><a href="<?=base_url();?>SachController/product_type">Sản phẩm 1</a></li>
+								<li><a href="<?=base_url();?>SachController/product_type">Sản phẩm 2</a></li>
+								
 							</ul>
 						</li>
 						<li><a href="<?=base_url();?>SachController/About">About</a></li>

@@ -7,13 +7,24 @@ class SachController extends CI_Controller {
 // trang chu
 	public function Index() {
 		$this->load->model("sachModel");
-		$data = $this->sachModel->getslide();
-		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','slide'=>'web/templates/slide','data'=>$data]);
+		$data = $this->sachModel->getslide();	
+		$data = $this->sachModel->GetProduct();
+		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
 	}
-	public function Product() {
-		$this->load->view("web/product");
+	public function Product_type() {
+		$this->load->model("sachModel");
+		$data = $this->sachModel->GetProduct();
+		$data = $this->sachModel->GetProduct_type();
+		$this->load->view("web/product_type",['header'=>'web/templates/header','footer'=>'web/templates/footer','sanpham'=>'web/templates/sanpham','data'=>$data]);
 	}
 
+        public function Product() {
+        	$this->load->model("sachModel");
+		$data = $this->sachModel->GetProduct();
+        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer','data'=>$data]);
+        }
+
+     
 	public function About() {
 		$this->load->view("web/about");
 	}
@@ -23,18 +34,8 @@ class SachController extends CI_Controller {
 	}
 
 	public function Login() {
- 		
- 		// $this->form_validation->set_rules("username", "Username" ,"required");
- 		// $this->form_validation->set_rules("password", "Password" ,"required");
- 		// if ($this->load->model("SachModel")) {
- 		// 	$data = array(
- 		// 		'username' => $this->input->post(""),
-
- 		// 	 );
- 			
- 		// }
-
  		$this->load->view("web/login",['header'=>'web/templates/header']);
+
 
 	}
 
@@ -59,10 +60,14 @@ class SachController extends CI_Controller {
 			"full_name"=>$this->input->post("full_name"),
 			"address"=>$this->input->post("address"),
 			"phone"=>$this->input->post("phone"),
-			"password"=>$this->input->post("password")
+			"email"=>$this->input->post("password")
 		);
+
+
+
+
 			$this->SachModel->Insert_User($data);
-			redirect(base_url()."SachController/inserted");
+			redirect(base_url()."sachController/inserted");
 		}else{
 			$this->signup();
 		}
@@ -114,7 +119,7 @@ class SachController extends CI_Controller {
 		$this->form_validation->set_rules("description", "Description" ,"required");
 		$this->form_validation->set_rules("unit_price", "Unit_Price" ,"required");
 		$this->form_validation->set_rules("promotion_price", "Promotion_Price" ,"required");
-		$this->form_validation->set_rules("image", "Image" ,"required");
+			$this->form_validation->set_rules("image", "Image" ,"required");
 		$this->form_validation->set_rules("unit", "Unit" ,"required");
 
 		if ($this->load->model("SachModel")) {
