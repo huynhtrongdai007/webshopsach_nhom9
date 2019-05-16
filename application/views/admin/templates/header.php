@@ -12,7 +12,7 @@
   <div class="navbar navbar-expand-md nav-link bg-light sticky-top">
     <nav class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img class="avatar mr-3" src="<?=base_url();?>img/meo.jpg" height="50">
+            <img class="avatar mr-3" src="<?=base_url();?>img/team/meo.jpg" height="50">
             <h4 class="mt-3">Kimdaihuynh</h4>  
         </a>
         

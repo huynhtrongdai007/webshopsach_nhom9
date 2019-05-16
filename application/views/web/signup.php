@@ -140,7 +140,7 @@
 	<div class="container">
 		<div id="content">
 			
-			<form action="<?=base_url();?>sachController/addProduct" method="post" class="beta-form-checkout">
+			<form action="<?=base_url();?>SachController/Form_validation" method="post" class="beta-form-checkout">
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-6">
