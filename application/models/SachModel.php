@@ -11,8 +11,16 @@ class SachModel extends CI_Model{
 		return $this->db->get('users')->result_array();
 	}
 
+	public function GetProduct_type() {
+		$data=$this->db->get('type_products');
+		return $data->result();
+	}
 	public function GetProduct() {
 		$data=$this->db->get('products');
+		return $data->result();
+	}
+	public function GetShopcart(){
+		$data=$this->db->get('bill');
 		return $data->result();
 	}
     public  function getslide() {

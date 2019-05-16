@@ -10,10 +10,19 @@ class SachController extends CI_Controller {
 		$data = $this->sachModel->getslide();
 		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','data'=>$data],);
 	}
-	public function Product() {
-		$this->load->view("web/product");
+	public function Product_type() {
+		$this->load->model("sachModel");
+		$data = $this->sachModel->GetProduct_type();
+		$this->load->view("web/product_type",['header'=>'web/templates/header','footer'=>'web/templates/footer'],);
 	}
 
+        public function Product() {
+        	$this->load->model("sachModel");
+		$data = $this->sachModel->GetProduct();
+        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer'],);
+        }
+
+     
 	public function About() {
 		$this->load->view("web/about");
 	}

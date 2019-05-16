@@ -7,11 +7,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/dest/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/dest/vendors/colorbox/example3/colorbox.css">
-	<link rel="stylesheet" title="style" href="assets/dest/css/style.css">
-	<link rel="stylesheet" href="assets/dest/css/animate.css">
-	<link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
+	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?=base_url();?>assets/dest/vendors/colorbox/example3/colorbox.css">
+	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/style.css">
+	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/animate.css">
+	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/huong-style.css">
 </head>
 <body>
 	
@@ -68,7 +68,7 @@
 									<a class="cart-item-edit" href="#"><i class="fa fa-pencil"></i></a>
 									<a class="cart-item-delete" href="#"><i class="fa fa-times"></i></a>
 									<div class="media">
-										<a class="pull-left" href="#"><img src="assets/dest/images/products/cart/1.png" alt=""></a>
+										<a class="pull-left" href="#"><img src="<?=base_url();?>assets/dest/images/products/cart/1.png" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">Sample Woman Top</span>
 											<span class="cart-item-options">Size: XS; Colar: Navy</span>
@@ -81,7 +81,7 @@
 									<a class="cart-item-edit" href="#"><i class="fa fa-pencil"></i></a>
 									<a class="cart-item-delete" href="#"><i class="fa fa-times"></i></a>
 									<div class="media">
-										<a class="pull-left" href="#"><img src="assets/dest/images/products/cart/2.png" alt=""></a>
+										<a class="pull-left" href="#"><img src="<?=base_url();?>assets/dest/images/products/cart/2.png" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">Sample Woman Top</span>
 											<span class="cart-item-options">Size: XS; Colar: Navy</span>
@@ -94,7 +94,7 @@
 									<a class="cart-item-edit" href="#"><i class="fa fa-pencil"></i></a>
 									<a class="cart-item-delete" href="#"><i class="fa fa-times"></i></a>
 									<div class="media">
-										<a class="pull-left" href="#"><img src="assets/dest/images/products/cart/3.png" alt=""></a>
+										<a class="pull-left" href="#"><img src="<?=base_url();?>assets/dest/images/products/cart/3.png" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">Sample Woman Top</span>
 											<span class="cart-item-options">Size: XS; Colar: Navy</span>
@@ -262,7 +262,7 @@
 						<tr class="cart_item">
 							<td class="product-name">
 								<div class="media">
-									<img class="pull-left" src="assets/dest/images/shoping1.jpg" alt="">
+									<img class="pull-left" src="<?=base_url();?>assets/dest/images/shoping1.jpg" alt="">
 									<div class="media-body">
 										<p class="font-large table-title">Men’s Belt</p>
 										<p class="table-option">Color: Red</p>
@@ -301,7 +301,7 @@
 						<tr class="cart_item">
 							<td class="product-name">
 								<div class="media">
-									<img class="pull-left" src="assets/dest/images/shoping2.jpg" alt="">
+									<img class="pull-left" src="<?=base_url();?><?=base_url();?>assets/dest/images/shoping2.jpg" alt="">
 									<div class="media-body">
 										<p class="font-large table-title">Men’s Belt</p>
 										<p class="table-option">Color: Red</p>
@@ -340,7 +340,7 @@
 						<tr class="cart_item">
 							<td class="product-name">
 								<div class="media">
-									<img class="pull-left" src="assets/dest/images/shoping3.jpg" alt="">
+									<img class="pull-left" src="<?=base_url();?>assets/dest/images/shoping3.jpg" alt="">
 									<div class="media-body">
 										<p class="font-large table-title">Men’s Belt</p>
 										<p class="table-option">Color: Red</p>
@@ -492,10 +492,10 @@
 		<div class="container">
 			<p class="pull-left">Privacy policy. (&copy;) 2014</p>
 			<p class="pull-right pay-options">
-				<a href="#"><img src="assets/dest/images/pay/master.jpg" alt="" /></a>
-				<a href="#"><img src="assets/dest/images/pay/pay.jpg" alt="" /></a>
-				<a href="#"><img src="assets/dest/images/pay/visa.jpg" alt="" /></a>
-				<a href="#"><img src="assets/dest/images/pay/paypal.jpg" alt="" /></a>
+				<a href="#"><img src="<?=base_url();?>assets/dest/images/pay/master.jpg" alt="" /></a>
+				<a href="#"><img src="<?=base_url();?>assets/dest/images/pay/pay.jpg" alt="" /></a>
+				<a href="#"><img src="<?=base_url();?>assets/dest/images/pay/visa.jpg" alt="" /></a>
+				<a href="#"><img src="<?=base_url();?>assets/dest/images/pay/paypal.jpg" alt="" /></a>
 			</p>
 			<div class="clearfix"></div>
 		</div> <!-- .container -->
@@ -503,14 +503,14 @@
 	
 
 	<!-- include js files -->
-	<script src="assets/dest/js/jquery.js"></script>
-	<script src="assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="<?=base_url();?>assets/dest/js/jquery.js"></script>
+	<script src="<?=base_url();?>assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-	<script src="assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
-	<script src="assets/dest/vendors/colorbox/jquery.colorbox-min.js"></script>
-	<script src="assets/dest/vendors/animo/Animo.js"></script>
-	<script src="assets/dest/vendors/dug/dug.js"></script>
-	<script src="assets/dest/js/scripts.min.js"></script>
+	<script src="<?=base_url();?>assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
+	<script src="<?=base_url();?>assets/dest/vendors/colorbox/jquery.colorbox-min.js"></script>
+	<script src="<?=base_url();?>assets/dest/vendors/animo/Animo.js"></script>
+	<script src="<?=base_url();?><?=base_url();?>assets/dest/vendors/dug/dug.js"></script>
+	<script src="<?=base_url();?>assets/dest/js/scripts.min.js"></script>
 	<!--customjs-->
 	<script type="text/javascript">
     $(function() {
