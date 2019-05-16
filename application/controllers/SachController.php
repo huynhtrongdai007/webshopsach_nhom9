@@ -7,7 +7,7 @@ class SachController extends CI_Controller {
 // trang chu
 	public function Index() {
 		$this->load->model("sachModel");
-		$data = $this->sachModel->getslide();
+		$data = $this->sachModel->getslide();	
 		$data = $this->sachModel->GetProduct();
 		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
 	}
