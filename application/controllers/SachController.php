@@ -18,8 +18,18 @@ class SachController extends CI_Controller {
 	}
 
 	public function Login() {
- 		$this->load->view("web/login",['header'=>'web/templates/header']);
+ 		
+ 		// $this->form_validation->set_rules("username", "Username" ,"required");
+ 		// $this->form_validation->set_rules("password", "Password" ,"required");
+ 		// if ($this->load->model("SachModel")) {
+ 		// 	$data = array(
+ 		// 		'username' => $this->input->post(""),
 
+ 		// 	 );
+ 			
+ 		// }
+
+ 		$this->load->view("web/login",['header'=>'web/templates/header']);
 
 	}
 
@@ -46,12 +56,8 @@ class SachController extends CI_Controller {
 			"phone"=>$this->input->post("phone"),
 			"email"=>$this->input->post("password")
 		);
-
-
-
-
 			$this->SachModel->Insert_User($data);
-			redirect(base_url()."sachController/inserted");
+			redirect(base_url()."SachController/inserted");
 		}else{
 			$this->signup();
 		}
@@ -101,7 +107,7 @@ class SachController extends CI_Controller {
 		$this->form_validation->set_rules("description", "Description" ,"required");
 		$this->form_validation->set_rules("unit_price", "Unit_Price" ,"required");
 		$this->form_validation->set_rules("promotion_price", "Promotion_Price" ,"required");
-			$this->form_validation->set_rules("image", "Image" ,"required");
+		$this->form_validation->set_rules("image", "Image" ,"required");
 		$this->form_validation->set_rules("unit", "Unit" ,"required");
 
 		if ($this->load->model("SachModel")) {
