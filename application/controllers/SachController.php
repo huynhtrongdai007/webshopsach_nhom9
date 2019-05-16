@@ -49,7 +49,7 @@ class SachController extends CI_Controller {
 			"full_name"=>$this->input->post("full_name"),
 			"address"=>$this->input->post("address"),
 			"phone"=>$this->input->post("phone"),
-			"email"=>$this->input->post("password")
+			"password"=>$this->input->post("password")
 		);
 
 
