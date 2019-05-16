@@ -8,18 +8,20 @@ class SachController extends CI_Controller {
 	public function Index() {
 		$this->load->model("sachModel");
 		$data = $this->sachModel->getslide();
-		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','data'=>$data],);
+		$data = $this->sachModel->GetProduct();
+		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
 	}
 	public function Product_type() {
 		$this->load->model("sachModel");
+		$data = $this->sachModel->GetProduct();
 		$data = $this->sachModel->GetProduct_type();
-		$this->load->view("web/product_type",['header'=>'web/templates/header','footer'=>'web/templates/footer'],);
+		$this->load->view("web/product_type",['header'=>'web/templates/header','footer'=>'web/templates/footer','sanpham'=>'web/templates/sanpham','data'=>$data]);
 	}
 
         public function Product() {
         	$this->load->model("sachModel");
 		$data = $this->sachModel->GetProduct();
-        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer'],);
+        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer','data'=>$data]);
         }
 
      
