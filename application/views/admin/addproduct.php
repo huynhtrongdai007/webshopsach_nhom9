@@ -15,7 +15,7 @@
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Miêu Tả</td>
- 	 		 	<td><input type="text" size="25" name="description"></td>
+ 	 		 	<td><textarea name="description"></textarea></td>
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Giá</td>
@@ -51,6 +51,8 @@
 <?php 
 	$this->load->view($footer);
  ?>
+
+ 
 
 
 			

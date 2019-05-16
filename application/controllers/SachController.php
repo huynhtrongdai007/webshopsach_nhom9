@@ -81,6 +81,8 @@ class SachController extends CI_Controller {
 		$this->load->view("admin/user");
 	}
 
+
+
 	
 
 	// public function product() {
@@ -139,5 +141,14 @@ class SachController extends CI_Controller {
 		$this->AddProduct();
 	}
 
+	public function delete_data() {
+		$id = $this->uri->segment(3);
+		$this->load->model("SachModel");
+		$this->SachModel->delete_data($id);
+		redirect(base_url(). "SachController/deleted"); 
+	}
+	public function deleted() {
+		$this->Products();
+	}
 	
 }

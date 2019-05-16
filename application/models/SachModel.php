@@ -46,4 +46,10 @@ class SachModel extends CI_Model{
 		}
 	}
 
+		function delete_data($id) {
+		$this->db->where("id",$id);
+		$this->db->delete("products");
+		//DELETE FROM user WHERE id = $id 
+	}
+
 }

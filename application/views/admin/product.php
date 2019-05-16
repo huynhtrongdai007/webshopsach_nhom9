@@ -22,15 +22,14 @@
         <?php foreach ($data as $product):?>
         <tr>
             <td><?= $stt; ?></td>
-             <td><?= $product->id ?></td>
+            <td><?= $product->id ?></td>
             <td><?= $product->name;?></td>
             <td><?= $product->description;?></td>
             <td><?= number_format($product->unit_price);?></td>
             <td><?= $product->promotion_price;?></td>
-            <td><img src="<?=base_url()?>uploads/<?=$product->image;?>" width="80"></td>
-            
+            <td><img src="<?=base_url();?>uploads/<?=$product->image;?>" width="80"></td>
             <td><a href="#">update</a></td>
-            <td><a href="#">delete</a></td>
+            <td><a href="#" class=" btn btn-primary delete_data" id="<?=$product->id;?>">delete</a></td>
         <?php $stt++; ?>
         </tr>
          
@@ -38,7 +37,20 @@
         
     </tbody>
 </table>
+ <script type="text/javascript">
+            $(document).ready(function(){
+                $('.delete_data').click(function(){
+                    var id = $(this).attr("id");
+                if (confirm("Bạn có chắc muốn xóa dòng dữ liệu này?")) {
+                    window.location="<?= base_url();?>SachController/delete_data/"+id;    
+                }else{
+                    return false;
+                }
+                });       
+            });
+    </script>   
 </div>
+
  <?php 
     include'templates/footer.php';
  ?>
