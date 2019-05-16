@@ -6,7 +6,12 @@ class SachController extends CI_Controller {
 
 // trang chu
 	public function Index() {
-		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
+		$this->load->model("sachModel");
+		$data = $this->sachModel->getslide();
+		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','slide'=>'web/templates/slide','data'=>$data]);
+	}
+	public function Product() {
+		$this->load->view("web/product");
 	}
 
 	public function About() {
@@ -54,7 +59,7 @@ class SachController extends CI_Controller {
 			"full_name"=>$this->input->post("full_name"),
 			"address"=>$this->input->post("address"),
 			"phone"=>$this->input->post("phone"),
-			"email"=>$this->input->post("password")
+			"password"=>$this->input->post("password")
 		);
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."SachController/inserted");
@@ -84,7 +89,7 @@ class SachController extends CI_Controller {
 	// 	$this->load->view("admin/product",['product'=>$data]);
 	// }
 
-	public function Product() {
+	public function Products() {
 		$this->load->model("SachModel");
 		$data=$this->SachModel->GetProduct();
 		$this->load->view("admin/product",['data'=>$data]);

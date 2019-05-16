@@ -9,7 +9,7 @@
      <div class="row">
         <div class="col-md-12">        
              <div class="khung">
-                <a href="<?=base_url();?>sachController/user">
+                <a href="<?=base_url();?>SachController/user">
                      <div class="select">
                      <i class="fas fa-users"></i>
                  </div>
@@ -17,7 +17,7 @@
                  <p>User</p>
              </div>
               <div class="khung">
-                 <a href="<?=base_url();?>sachController/product">
+                 <a href="<?=base_url();?>SachController/products">
                      <div class="select">
                      <i class="fas fa-book"></i>
                  </div>

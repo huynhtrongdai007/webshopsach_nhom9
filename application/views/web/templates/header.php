@@ -29,7 +29,7 @@
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
 						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-						<li><a href="<?=base_url();?>signup">Đăng kí</a></li>
+						<li><a href="<?=base_url();?>SachController/signup">Đăng kí</a></li>
 						<li><a href="<?=base_url();?>sachController/login">Đăng nhập</a></li>
 					</ul>
 				</div>
@@ -109,7 +109,7 @@
 				<div class="visible-xs clearfix"></div>
 				<nav class="main-menu">
 					<ul class="l-inline ov">
-						<li><a href="index.html">Trang chủ</a></li>
+						<li><a href="<?=base_url();?>Index.php">Trang chủ</a></li>
 						<li><a href="#">Sản phẩm</a>
 							<ul class="sub-menu">
 								<li><a href="product_type.html">Sản phẩm 1</a></li>
