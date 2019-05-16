@@ -109,7 +109,7 @@
 				<div class="visible-xs clearfix"></div>
 				<nav class="main-menu">
 					<ul class="l-inline ov">
-						<li><a href="index.html">Trang chủ</a></li>
+						<li><a href="<?=base_url();?>Index.php">Trang chủ</a></li>
 						<li><a href="#">Sản phẩm</a>
 							<ul class="sub-menu">
 								<li><a href="product_type.html">Sản phẩm 1</a></li>
