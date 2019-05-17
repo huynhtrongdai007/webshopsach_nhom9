@@ -26,7 +26,7 @@
             <td><?= $product->name;?></td>
             <td><?= $product->description;?></td>
             <td><?= number_format($product->unit_price);?></td>
-            <td><?= $product->promotion_price;?></td>
+            <td><?= number_format($product->promotion_price);?></td>
             <td><img src="<?=base_url();?>uploads/<?=$product->image;?>" width="80"></td>
             <td><a href="#">update</a></td>
             <td><a href="#" class=" btn btn-primary delete_data" id="<?=$product->id;?>">delete</a></td>
