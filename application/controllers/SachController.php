@@ -131,7 +131,7 @@ class SachController extends CI_Controller {
 		);
 
 
-			$this->sachModel->insert_product($data);
+			$this->SachModel->insert_product($data);
 			redirect(base_url()."SachController/insertedAddProduct");
 			$data['image']=$this->Upload_Image();
 		}else{
