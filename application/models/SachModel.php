@@ -21,6 +21,15 @@ class SachModel extends CI_Model{
 		//$data=$this->db->get("slide");
 		return $data->result();
 	}
+
+	// lấy mot san pham 
+	public function SelectProduct($id) {
+		
+		$data = $this->db->query("SELECT * FROM products WHERE id = '$id'");
+		return $data->result_array();
+	}
+
+
 	public function GetShopcart(){
 		$data=$this->db->get('bill');
 		return $data->result();

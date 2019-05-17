@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/style.css">
      <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
-<!--   <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/script.js"></script -->>
+<!--   <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/script.js"></script -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>

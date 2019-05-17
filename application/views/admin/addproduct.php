@@ -25,7 +25,7 @@
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Giá Khuyến mãi:</td>
- 	 		 	<td><input type="text" size="25" name="promotion_price" required="required" ></td>
+ 	 		 	<td><input type="text" size="25" name="promotion_price"></td>
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>đơn vị:</td>

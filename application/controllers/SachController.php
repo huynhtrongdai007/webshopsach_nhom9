@@ -35,8 +35,6 @@ class SachController extends CI_Controller {
 
 	public function Login() {
  		$this->load->view("web/login",['header'=>'web/templates/header']);
-
-
 	}
 
 
@@ -146,6 +144,7 @@ class SachController extends CI_Controller {
 		$this->AddProduct();
 	}
 
+  // xoa san pham
 	public function delete_data() {
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
@@ -155,5 +154,16 @@ class SachController extends CI_Controller {
 	public function deleted() {
 		$this->Products();
 	}
+
+// cap nhat san pham
+
+	public function Updateproduct() {
+		$id = $this->uri->segment(3);
+		$this->load->model("SachModel");
+		$this->SachModel->SelectProduct($id);
+		$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','id'=>$id]);
+	}
+
+
 	
 }
