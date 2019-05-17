@@ -71,4 +71,9 @@ class SachModel extends CI_Model{
 		//DELETE FROM user WHERE id = $id 
 	}
 
+	function update_data($data,$id) {
+		$this->db->where("id",$id);
+		$this->db->update("products",$data);
+	}
+
 }
