@@ -50,7 +50,7 @@
  	 		 </tr>
  	 		 <tr>
  	 		 	<td></td>
- 	 		 	<td><input class="btn btn-success add-product" type="submit" name="insert" value="Update"></td>
+ 	 		 	<td><input class="btn btn-success add-product" type="submit" name="update" value="Update"></td>
  	 		 </tr>
  	 		 <?php } ?>
  	 		  <?php 
