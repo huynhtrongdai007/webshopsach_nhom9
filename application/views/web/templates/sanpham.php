@@ -1,6 +1,6 @@
 <div class="col-sm-12">
 						<div class="beta-products-list">
-							<h4 style="color: red ;font-family :sans-serifs ; font-size: 40px; background-color:#00ffff	">  Sản phẩm mới</h4>
+							<h4 style="color: red ;font-family :sans-serifs ; font-size: 40px	">  Sản phẩm mới</h4>
 
 							<div class="beta-products-details">
 								
@@ -45,7 +45,7 @@
 						
 					   <br>
 						<div class="beta-products-list">
-							<h4 style="color: red ;font-family :sans-serifs ; font-size: 40px; background-color:#00ffff	">  Top sản  phẩm </h4>
+							<h4 style="color: red ;font-family :sans-serifs ; font-size: 40px	">  Top sản  phẩm </h4>
 							<div class="beta-products-details">
 								
 								<div class="clearfix"></div>
