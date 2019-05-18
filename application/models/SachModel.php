@@ -24,7 +24,7 @@ class SachModel extends CI_Model{
 
 	// lấy mot san pham 
 	public function SelectProduct($id) {
-		
+			
 		$data = $this->db->query("SELECT * FROM products WHERE id = '$id'");
 		return $data->result_array();
 	}
@@ -71,9 +71,11 @@ class SachModel extends CI_Model{
 		//DELETE FROM user WHERE id = $id 
 	}
 
+ 	// cap nhat san pham
 	function update_data($data,$id) {
 		$this->db->where("id",$id);
 		$this->db->update("products",$data);
+		
 	}
 
 }

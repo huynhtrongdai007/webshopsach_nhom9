@@ -37,11 +37,6 @@ class SachController extends CI_Controller {
  		$this->load->view("web/login",['header'=>'web/templates/header']);
 	}
 
-
-
-
-
-
 // signup 
 
 	public function Form_validation() {
@@ -60,9 +55,7 @@ class SachController extends CI_Controller {
 			"phone"=>$this->input->post("phone"),
 			"email"=>$this->input->post("password")
 		);
-
-
-
+		
 
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
@@ -70,6 +63,7 @@ class SachController extends CI_Controller {
 			$this->signup();
 		}
 	}
+
 
 	public function Inserted() {
 		$this->signup();
@@ -117,7 +111,7 @@ class SachController extends CI_Controller {
 		$this->form_validation->set_rules("description", "Description" ,"required");
 		$this->form_validation->set_rules("unit_price", "Unit_Price" ,"required");
 		$this->form_validation->set_rules("promotion_price", "Promotion_Price" ,"required");
-			$this->form_validation->set_rules("image", "Image" ,"required");
+		$this->form_validation->set_rules("image", "Image" ,"required");
 		$this->form_validation->set_rules("unit", "Unit" ,"required");
 
 		if ($this->load->model("SachModel")) {
@@ -129,7 +123,6 @@ class SachController extends CI_Controller {
 			"image"=>$this->input->post("image"),
 			"unit"=>$this->input->post("unit")
 		);
-
 
 			$this->SachModel->insert_product($data);
 			redirect(base_url()."SachController/insertedAddProduct");
@@ -158,12 +151,78 @@ class SachController extends CI_Controller {
 // cap nhat san pham
 
 	public function Updateproduct() {
-		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
-		$this->SachModel->SelectProduct($id);
-		$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','id'=>$id]);
+			$id=$_GET["id"];
+			$data=$this->SachModel->SelectProduct($id); 
+		
+		$this->load->model("SachModel");
+		$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','data'=>$data,'id'=>$id]
+	);
+		
+	}
+//$this->input->post("hidden_id")
+	 public function Update_data() {
+	 			
+	 			
+				if ($this->load->model("SachModel")) {
+					$this->load->library('form_validation');
+
+						if ($this->input->post("update")) {
+							$data = array(
+							"name"=>$this->input->post("name_product"),
+							"description"=>$this->input->post("description"),
+							"unit_price"=>$this->input->post("unit_price"),
+							"promotion_price"=>$this->input->post("promotion_price"),
+							"image"=>$this->input->post("image"),
+							"unit"=>$this->input->post("unit")
+						);
+	 					$this->load->model("SachModel");
+	 				$this->SachModel->update_data($data,$this->input->post("hidden_id"));
+	 				 redirect(base_url()."SachController/updated");
+	 				}
+
+				}
+	 				
+	 			
+	 		
+	 }
+
+
+	public function upload_validation() {
+		
+		// $this->load->library('form_validation');
+		// if ($this->form_validation->run()) {
+			
+				//true
+					if ($this->input->post("update")) {
+						$data = array(
+								"name"=>$this->input->post("name_product"),
+								"description"=>$this->input->post("description"),
+								"unit_price"=>$this->input->post("unit_price"),
+								"promotion_price"=>$this->input->post("promotion_price"),
+								"image"=>$this->input->post("image"),
+								"unit"=>$this->input->post("unit")
+							);
+						$this->load->model("SachModel");
+	 					$this->SachModel->update_data($data,$this->input->post("hidden_id"));
+	 					$id=$this->input->post("hidden_id");
+	 					 redirect(base_url()."SachController/updated/?id=".$id);
+	 					 // $this->SachModel->Insert_User($data);
+	 					
+	 			}
+						
+	 			
+			//}
+			
 	}
 
 
+public function updated(){
+		$this->updateproduct();
+}
+
+public function	update_filse(){
+		$this->Updateproduct();
+	}
 	
 }

@@ -1,23 +1,18 @@
 <?php 
 	$this->load->view($header);
-	$this->load->model("SachModel");
-	$id=$_GET["id"];
-	$data=$this->SachModel->SelectProduct($id);
-	    
+	
  ?>
-
-
-
 <div class="container mt-5">
 	<h1 class="text-center color-tim">Update Sản Phẩm</h1>
 	<div class="form-add-product">
- 	 <form action="<?=base_url();?>sachController/Updateproduct" method="POST" enctype="multipart/form-data">
-
- 	 	<table id="table-add-product">
- 	 		<?php 
+		<?php 
 				foreach ($data as $value){
 
 		 	?>
+ 	 <form action="<?=base_url();?>SachController/upload_validation" method="POST" enctype="multipart/form-data">
+
+ 	 	<table id="table-add-product">
+ 	 		
  	 		 <tr>
  	 		 	<td>Name:</td>
  	 		 	<td>
@@ -50,16 +45,25 @@
  	 		 </tr>
  	 		 <tr>
  	 		 	<td></td>
- 	 		 	<td><input class="btn btn-success add-product" type="submit" name="update" value="Update"></td>
+ 	 		 	<td>
+ 	 		 		<input type="hidden" name="hidden_id" value="<?=$value['id'] ?>">
+ 	 		 		<input class="btn btn-success add-product" type="submit" name="update" value="Update"></td>
  	 		 </tr>
- 	 		 <?php } ?>
- 	 		  <?php 
-					if($this->uri->segment(2)=="insertedAddProduct") {
-						echo '<p class="text-success text-center">Success</p>';
-					}
-				?>
+ 	 		 
+ 	 		 
  	 	</table>
  	 </form>
+ 	 <?php } ?>
+ 	  <?php 
+		if($this->uri->segment(2)=="updated") {
+						echo '<p class="text-success text-center">Success</p>';
+					}
+
+				if($this->uri->segment(2)=="update_filse") {
+						echo '<p class="text-success text-center">false</p>';
+					}
+
+				?>
  </div>
 
 </div>
