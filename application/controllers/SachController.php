@@ -1,4 +1,4 @@
-<?php
+																																																																																																																																					<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SachController extends CI_Controller {
@@ -10,6 +10,8 @@ class SachController extends CI_Controller {
 		$data = $this->sachModel->getslide();	
 		$data = $this->sachModel->GetProduct();
 		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
+		//$this->pagination(10);
+		
 	}
 	public function Product_type() {
 		$this->load->model("sachModel");
@@ -20,8 +22,10 @@ class SachController extends CI_Controller {
 
         public function Product() {
         	$this->load->model("sachModel");
-		$data = $this->sachModel->GetProduct();
-        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer','data'=>$data]);
+        	
+		$data = $this->sachModel->Getslidesp();
+		$data = $this->sachModel->Getchisp();
+        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer','sanpham'=>'web/templates/slidesp','chisp'=>'web/templates/chitietsp','data'=>$data]);
         }
 
      
@@ -38,7 +42,16 @@ class SachController extends CI_Controller {
 	}
 
 
+     public function pagination()
+     {
+       $config['base_url'] = 'Inddex.php';
+       $config['total_rows'] = 200;
+       $config['per_page'] = 20;
 
+      $this->pagination->initialize($config);
+
+       echo $this->pagination->create_links();
+     }
 
 
 
