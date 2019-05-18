@@ -16,10 +16,17 @@
 				</div> <!-- end section with sidebar and main content -->
 
 
-			</div> <!-- .main-content -->
+			</div> <!-- .main-content -->  
+			            <ul class="pagination "style="display;: inline-block;float: left;" >
+                           <li><a href="<?=base_url();?>" >1</a></li>
+                           <li><a href="#">2</a></li>
+                           <li><a href="#">3</a></li>
+                           <li><a href="#">4</a></li>
+                           <li><a href="#">5</a></li>
+                          </ul>
 		</div> <!-- #content -->
 	</div> <!-- .container -->
-
+                            
 	<?php $this->load->view($footer); ?>
 
 

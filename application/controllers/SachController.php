@@ -82,11 +82,7 @@ class SachController extends CI_Controller {
 
 	
 
-	// public function product() {
-	// 	$this->load->model("sachModel");
-	// 	$data = $this->sachModel->getAllBook();
-	// 	$this->load->view("admin/product",['product'=>$data]);
-	// }
+
 
 	public function Products() {
 		$this->load->model("SachModel");
@@ -137,7 +133,7 @@ class SachController extends CI_Controller {
 		$this->AddProduct();
 	}
 
-  // xoa san pham
+
 	public function delete_data() {
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
@@ -148,7 +144,7 @@ class SachController extends CI_Controller {
 		$this->Products();
 	}
 
-// cap nhat san pham
+
 
 	public function Updateproduct() {
 		$this->load->model("SachModel");
@@ -160,7 +156,7 @@ class SachController extends CI_Controller {
 	);
 		
 	}
-//$this->input->post("hidden_id")
+
 	 public function Update_data() {
 	 			
 	 			
@@ -190,10 +186,9 @@ class SachController extends CI_Controller {
 
 	public function upload_validation() {
 		
-		// $this->load->library('form_validation');
-		// if ($this->form_validation->run()) {
+	
 			
-				//true
+				
 					if ($this->input->post("update")) {
 						$data = array(
 								"name"=>$this->input->post("name_product"),
@@ -207,12 +202,12 @@ class SachController extends CI_Controller {
 	 					$this->SachModel->update_data($data,$this->input->post("hidden_id"));
 	 					$id=$this->input->post("hidden_id");
 	 					 redirect(base_url()."SachController/updated/?id=".$id);
-	 					 // $this->SachModel->Insert_User($data);
+	 				
 	 					
 	 			}
 						
 	 			
-			//}
+			
 			
 	}
 
