@@ -56,11 +56,11 @@
  	 <?php } ?>
  	  <?php 
 		if($this->uri->segment(2)=="updated") {
-						echo '<p class="text-success text-center">Success</p>';
+						echo '<p class="text-success text-center display-4">Success</p>';
 					}
 
 				if($this->uri->segment(2)=="update_filse") {
-						echo '<p class="text-success text-center">false</p>';
+						echo '<p class="text-danger text-center display-4">false</p>';
 					}
 
 				?>

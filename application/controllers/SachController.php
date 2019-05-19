@@ -157,38 +157,10 @@ class SachController extends CI_Controller {
 		
 	}
 
-	 public function Update_data() {
-	 			
-	 			
-				if ($this->load->model("SachModel")) {
-					$this->load->library('form_validation');
-
-						if ($this->input->post("update")) {
-							$data = array(
-							"name"=>$this->input->post("name_product"),
-							"description"=>$this->input->post("description"),
-							"unit_price"=>$this->input->post("unit_price"),
-							"promotion_price"=>$this->input->post("promotion_price"),
-							"image"=>$this->input->post("image"),
-							"unit"=>$this->input->post("unit")
-						);
-	 					$this->load->model("SachModel");
-	 				$this->SachModel->update_data($data,$this->input->post("hidden_id"));
-	 				 redirect(base_url()."SachController/updated");
-	 				}
-
-				}
-	 				
-	 			
-	 		
-	 }
-
+	
 
 	public function upload_validation() {
-		
-	
-			
-				
+				$id=$this->input->post("hidden_id");
 					if ($this->input->post("update")) {
 						$data = array(
 								"name"=>$this->input->post("name_product"),
@@ -197,17 +169,26 @@ class SachController extends CI_Controller {
 								"promotion_price"=>$this->input->post("promotion_price"),
 								"image"=>$this->input->post("image"),
 								"unit"=>$this->input->post("unit")
+								
+
 							);
-						$this->load->model("SachModel");
-	 					$this->SachModel->update_data($data,$this->input->post("hidden_id"));
-	 					$id=$this->input->post("hidden_id");
+							$this->load->model("SachModel");
+							
+								if ($data) {
+									$data['image']=$this->SachModel->Upload_Image($data);
+									 
+								}
+							
+						
+	 					$this->SachModel->update_data($data,$id);
+	 					 
 	 					 redirect(base_url()."SachController/updated/?id=".$id);
 	 				
-	 					
-	 			}
-						
-	 			
-			
+	 			}else{
+	 				
+	 				 	redirect(base_url()."SachController/update_filse/?id=".$id);
+	 				 
+	 			}	
 			
 	}
 

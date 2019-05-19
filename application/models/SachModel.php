@@ -58,7 +58,7 @@ class SachModel extends CI_Model{
 		$this->db->insert("products",$data);
 	}
 
-	public function Upload_Image() {
+	public function Upload_Image($data) {
 		$config['upload_path']='./uploads';
 		$config['allowed_types']='gif|jpg|png';
 		$config['encrypt_name']=TRUE;
@@ -68,6 +68,8 @@ class SachModel extends CI_Model{
 			return false;
 		}else{
 			$data_uploaded = $this->upload->data();
+			$this->db->set($data);
+
 			return $this->upload->data()['file_name'];
 
 		}
