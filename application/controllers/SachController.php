@@ -66,11 +66,6 @@ class SachController extends CI_Controller {
 		$this->login();
 	}
 
-
-
-
-
-
 // signup 
 
 	public function Form_validation() {
@@ -89,9 +84,7 @@ class SachController extends CI_Controller {
 			"phone"=>$this->input->post("phone"),
 			"email"=>$this->input->post("password")
 		);
-
-
-
+		
 
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
@@ -99,6 +92,7 @@ class SachController extends CI_Controller {
 			$this->signup();
 		}
 	}
+
 
 	public function Inserted() {
 		$this->signup();
@@ -112,16 +106,6 @@ class SachController extends CI_Controller {
 	public function User() {
 		$this->load->view("admin/user");
 	}
-
-
-
-	
-
-	// public function product() {
-	// 	$this->load->model("sachModel");
-	// 	$data = $this->sachModel->getAllBook();
-	// 	$this->load->view("admin/product",['product'=>$data]);
-	// }
 
 	public function Products() {
 		$this->load->model("SachModel");
@@ -146,7 +130,7 @@ class SachController extends CI_Controller {
 		$this->form_validation->set_rules("description", "Description" ,"required");
 		$this->form_validation->set_rules("unit_price", "Unit_Price" ,"required");
 		$this->form_validation->set_rules("promotion_price", "Promotion_Price" ,"required");
-			$this->form_validation->set_rules("image", "Image" ,"required");
+		$this->form_validation->set_rules("image", "Image" ,"required");
 		$this->form_validation->set_rules("unit", "Unit" ,"required");
 
 		if ($this->load->model("SachModel")) {
@@ -155,14 +139,18 @@ class SachController extends CI_Controller {
 			"description"=>$this->input->post("description"),
 			"unit_price"=>$this->input->post("unit_price"),
 			"promotion_price"=>$this->input->post("promotion_price"),
-			"image"=>$this->input->post("image"),
+			//"image"=>$this->input->post("image"),
+			"image"=> $_FILES['image']['name'],
 			"unit"=>$this->input->post("unit")
 		);
 
-
+//print_r($data);exit;
+			$data['image']=$this->SachModel->Upload_Image();
 			$this->SachModel->insert_product($data);
+
 			redirect(base_url()."SachController/insertedAddProduct");
-			$data['image']=$this->Upload_Image();
+			
+
 		}else{
 			$this->AddProduct();
 		}
@@ -173,7 +161,7 @@ class SachController extends CI_Controller {
 		$this->AddProduct();
 	}
 
-  // xoa san pham
+
 	public function delete_data() {
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
@@ -184,15 +172,62 @@ class SachController extends CI_Controller {
 		$this->Products();
 	}
 
-// cap nhat san pham
+
 
 	public function Updateproduct() {
-		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
-		$this->SachModel->SelectProduct($id);
-		$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','id'=>$id]);
+			$id=$_GET["id"];
+			$data=$this->SachModel->SelectProduct($id); 
+		
+		$this->load->model("SachModel");
+		$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','data'=>$data,'id'=>$id]
+	);
+		
+	}
+
+	
+
+	public function upload_validation() {
+				$id=$this->input->post("hidden_id");
+					if ($this->input->post("update")) {
+						$data = array(
+								"name"=>$this->input->post("name_product"),
+								"description"=>$this->input->post("description"),
+								"unit_price"=>$this->input->post("unit_price"),
+								"promotion_price"=>$this->input->post("promotion_price"),
+								//"image"=>$this->input->post("image"),
+								"unit"=>$this->input->post("unit")
+								
+
+							);
+							$this->load->model("SachModel");
+							
+								if ($_FILES['image']['error']==0) 
+								{
+									$data['image']=$this->SachModel->Upload_Image();
+									 
+								}
+							
+						
+	 					$this->SachModel->update_data($data,$id);
+	 					 
+	 					 redirect(base_url()."SachController/updated/?id=".$id);
+	 				
+	 			}else{
+	 				
+	 				 	redirect(base_url()."SachController/update_filse/?id=".$id);
+	 				 
+	 			}	
+			
 	}
 
 
+public function updated(){
+		$this->updateproduct();
+}
+
+public function	update_filse(){
+		$this->Updateproduct();
+	}
 	
 }

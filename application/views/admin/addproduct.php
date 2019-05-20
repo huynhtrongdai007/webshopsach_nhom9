@@ -13,15 +13,15 @@
 
  	 		 <tr>
  	 		 	<td>Name:</td>
- 	 		 	<td><input type="text" size="25" name="name_product" required="required"></td>
+ 	 		 	<td><input type="text" size="25" name="name_product"></td>
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Miêu Tả:</td>
- 	 		 	<td><textarea  name="description" required="required"></textarea></td>
+ 	 		 	<td><textarea  name="description"></textarea></td>
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Giá:</td>
- 	 		 	<td><input type="text" size="25" name="unit_price" required="required"></td>
+ 	 		 	<td><input type="text" size="25" name="unit_price"></td>
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Giá Khuyến mãi:</td>
@@ -29,7 +29,7 @@
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>đơn vị:</td>
- 	 		 	<td><input type="text" size="25" name="unit" required="required"></td>
+ 	 		 	<td><input type="text" size="25" name="unit"></td>
  	 		 </tr>
  	 		 <tr>
  	 		 	<td>Hình ảnh:</td>

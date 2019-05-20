@@ -10,21 +10,29 @@ class SachModel extends CI_Model{
 	public function GetAllUser() {
 		return $this->db->get('users')->result_array();
 	}
-
-	public function GetProduct_type() {
+	public function paGetProduct_type() {
 		$data=$this->db->get('type_products');
-		$data=$this->db->get('products');
+		$data=$this->db->get('products',8);
 		return $data->result();
 	}
 	public function GetProduct() {
 		$data=$this->db->get('products');
-		//$data=$this->db->get("slide");
+	//		$data=$this->db->get("slide",4);
 		return $data->result();
 	}
-
+	public function Getslidesp() {
+		$data=$this->db->get('products',3);
+	//		$data=$this->db->get("slide",4);
+		return $data->result();
+	}
+	public function Getchisp() {
+		$data=$this->db->get('products',1);
+	//		$data=$this->db->get("slide",4);
+		return $data->result();
+	}
 	// lấy mot san pham 
 	public function SelectProduct($id) {
-		
+			
 		$data = $this->db->query("SELECT * FROM products WHERE id = '$id'");
 		return $data->result_array();
 	}
@@ -44,7 +52,7 @@ class SachModel extends CI_Model{
 		return $data->result();
 	}
     public  function getslide() {
-		$data=$this->db->get("slide");
+		$data=$this->db->get("slide",4);
             return $data->result();
 		
 	} 
@@ -55,7 +63,7 @@ class SachModel extends CI_Model{
 	}
 
 	function Insert_Product($data) {
-		$data['image']=$this->upload_image();
+		//$data['image']=$this->upload_image();
 		$this->db->insert("products",$data);
 	}
 
@@ -69,6 +77,8 @@ class SachModel extends CI_Model{
 			return false;
 		}else{
 			$data_uploaded = $this->upload->data();
+			//$this->db->set($data);
+
 			return $this->upload->data()['file_name'];
 
 		}
@@ -80,9 +90,11 @@ class SachModel extends CI_Model{
 		//DELETE FROM user WHERE id = $id 
 	}
 
+ 	// cap nhat san pham
 	function update_data($data,$id) {
 		$this->db->where("id",$id);
 		$this->db->update("products",$data);
+		
 	}
 
 }
