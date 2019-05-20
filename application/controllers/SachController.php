@@ -34,7 +34,36 @@ class SachController extends CI_Controller {
 	}
 
 	public function Login() {
+ 		$this->load->view("web/login",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
+	}
+	public function Process(){
+		$this->load->library('session');
+		$post = $this->input->post(null,TRUE);
+		if(isset($post['submit'])){
+			$this->load->model('SachModel');
+			$query=$this->SachModel->Login($post);
+			if ($query->num_rows()>0) {
+				$data = array(
+					'full_name' => $this->input->post('username'),
+					'password' =>$this->input->post('password'),);
+				$this->session->set_userdata('$data');
+	
+				
+
+			}else{
+				redirect(base_url()."SachController/LoginFail");
+				$this->login();
+			}
+		}
+
+		
  		$this->load->view("web/login",['header'=>'web/templates/header']);
+
+
+
+	}
+	public function LoginFail(){
+		$this->login();
 	}
 
 

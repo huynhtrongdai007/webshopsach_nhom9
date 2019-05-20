@@ -28,6 +28,15 @@ class SachModel extends CI_Model{
 		$data = $this->db->query("SELECT * FROM products WHERE id = '$id'");
 		return $data->result_array();
 	}
+	public function Login($post){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('full_name',$post['username']);
+		$this->db->where('password',$post['password']);
+		$query =$this->db->get();
+		return $query;
+
+	}
 
 
 	public function GetShopcart(){

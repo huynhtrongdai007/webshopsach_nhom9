@@ -16,7 +16,7 @@
 	<div class="container">
 		<div id="content">
 			
-			<form action="<?=base_url();?>admin/login_validation" method="post" class="beta-form-checkout">
+			<form action="<?=base_url();?>SachController/Admin" method="post" class="beta-form-checkout">
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-6">
@@ -31,7 +31,7 @@
 							<input type="Password" name="password" id="phone" required>
 						</div>
 						<div class="form-block">
-							<button type="submit" name="insert" class="btn btn-primary">Login</button>
+							<button type="submit" name="submit" class="btn btn-primary">Login</button>
 						</div>
 					</div>
 					<div class="col-sm-3"></div>
