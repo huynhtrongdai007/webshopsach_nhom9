@@ -16,7 +16,7 @@ class SachModel extends CI_Model{
 		return $data->result();
 	}
 	public function GetProduct() {
-		$data=$this->db->get('products',8);
+		$data=$this->db->get('products');
 	//		$data=$this->db->get("slide",4);
 		return $data->result();
 	}
@@ -54,11 +54,11 @@ class SachModel extends CI_Model{
 	}
 
 	function Insert_Product($data) {
-		$data['image']=$this->upload_image();
+		//$data['image']=$this->upload_image();
 		$this->db->insert("products",$data);
 	}
 
-	public function Upload_Image($data) {
+	public function Upload_Image() {
 		$config['upload_path']='./uploads';
 		$config['allowed_types']='gif|jpg|png';
 		$config['encrypt_name']=TRUE;
@@ -68,7 +68,7 @@ class SachModel extends CI_Model{
 			return false;
 		}else{
 			$data_uploaded = $this->upload->data();
-			$this->db->set($data);
+			//$this->db->set($data);
 
 			return $this->upload->data()['file_name'];
 

@@ -78,12 +78,6 @@ class SachController extends CI_Controller {
 		$this->load->view("admin/user");
 	}
 
-
-
-	
-
-
-
 	public function Products() {
 		$this->load->model("SachModel");
 		$data=$this->SachModel->GetProduct();
@@ -116,13 +110,18 @@ class SachController extends CI_Controller {
 			"description"=>$this->input->post("description"),
 			"unit_price"=>$this->input->post("unit_price"),
 			"promotion_price"=>$this->input->post("promotion_price"),
-			"image"=>$this->input->post("image"),
+			//"image"=>$this->input->post("image"),
+			"image"=> $_FILES['image']['name'],
 			"unit"=>$this->input->post("unit")
 		);
 
+//print_r($data);exit;
+			$data['image']=$this->SachModel->Upload_Image();
 			$this->SachModel->insert_product($data);
+
 			redirect(base_url()."SachController/insertedAddProduct");
-			$data['image']=$this->Upload_Image();
+			
+
 		}else{
 			$this->AddProduct();
 		}
@@ -167,15 +166,16 @@ class SachController extends CI_Controller {
 								"description"=>$this->input->post("description"),
 								"unit_price"=>$this->input->post("unit_price"),
 								"promotion_price"=>$this->input->post("promotion_price"),
-								"image"=>$this->input->post("image"),
+								//"image"=>$this->input->post("image"),
 								"unit"=>$this->input->post("unit")
 								
 
 							);
 							$this->load->model("SachModel");
 							
-								if ($data) {
-									$data['image']=$this->SachModel->Upload_Image($data);
+								if ($_FILES['image']['error']==0) 
+								{
+									$data['image']=$this->SachModel->Upload_Image();
 									 
 								}
 							
