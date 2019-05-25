@@ -28,9 +28,8 @@ class SachController extends CI_Controller {
 	public function About() {
 		$this->load->view("web/about");
 	}
-
 	public function SignUp() {
- 		$this->load->view("web/signup");
+ 		$this->load->view("web/signup",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
 	}
 
 	public function Login() {
@@ -46,10 +45,8 @@ class SachController extends CI_Controller {
 				$data = array(
 					'full_name' => $this->input->post('username'),
 					'password' =>$this->input->post('password'),);
-				$this->session->set_userdata('$data');
-	
-				
 
+	
 			}else{
 				redirect(base_url()."SachController/LoginFail");
 				$this->login();
