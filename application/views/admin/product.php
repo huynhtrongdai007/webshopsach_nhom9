@@ -28,7 +28,7 @@
             <td><?= number_format($product->unit_price);?></td>
             <td><?= number_format($product->promotion_price);?></td>
             <td><img src="<?=base_url();?>uploads/<?=$product->image;?>" width="80"></td>
-            <td><a href="<?=base_url();?>SachController/Updateproduct?id=<?=$product->id; ?>">update</a></td>
+            <td><a class=" btn btn-primary" href="<?=base_url();?>SachController/Updateproduct?id=<?=$product->id; ?>" >update</a></td>
             <td><a href="#" class=" btn btn-primary delete_data" id="<?=$product->id;?>">delete</a></td>
         <?php $stt++; ?>
         </tr>
