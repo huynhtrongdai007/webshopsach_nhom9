@@ -5,12 +5,12 @@ class SachController extends CI_Controller {
 
 
 // trang chu
-	public function Index() {
-		$this->load->model("sachModel");
-		$data = $this->sachModel->getslide();	
-		$data = $this->sachModel->GetProduct();
-		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
-	}
+	// public function Index() {
+	// 	$this->load->model("sachModel");
+	// 	$data = $this->sachModel->getslide();	
+	// 	$data = $this->sachModel->GetProduct();
+	// 	$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
+	// }
 	public function Product_type() {
 		$this->load->model("sachModel");
 		$data = $this->sachModel->GetProduct();
@@ -19,9 +19,8 @@ class SachController extends CI_Controller {
 	}
 
         public function Product() {
-        	$this->load->model("sachModel");
-		$data = $this->sachModel->GetProduct();
-        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer','data'=>$data]);
+        	
+        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
         }
 
      
@@ -185,7 +184,9 @@ class SachController extends CI_Controller {
 		
 	}
 
-	
+	function fetch_product() {
+      	$this->load->modal("SachModel");
+      }
 
 	public function upload_validation() {
 				$id=$this->input->post("hidden_id");
@@ -231,3 +232,35 @@ public function	update_filse(){
 	}
 	
 }
+
+
+// model form add product
+
+function product_action() {
+	if ($_POST["action"] == "Add") {
+		$insert_data = array(
+			'name' => $this->input->post('name'),
+			'description' => $this->input->post('description'),
+			'unit_price'=> $this->input->post('unit_price'),
+			'promotion_price'=> $this->input->post('promotion_price'),
+			'image'			=>$this->upload_image(),
+			'unit' =>$this->input->post('unit')
+		);
+		$this->load->modal("SachModel");
+		$this->SachModel->insert_crud($insert_data);
+		echo "Data Inserted";
+	}
+}
+
+function upload_image() {
+	if (isset($_FILES["product_image"])) {
+		$extension  = explode('.', $_FILES['product_image']['name']);
+		$new_name = rand().'.'.$extension[1];
+		$destiantion = './uploads/'.$new_name;
+		move_uploaded_file($_FILES['poduct_image']['tmp_name'], $destination);
+		return $new_name;
+	}
+}
+
+
+

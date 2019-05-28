@@ -16,20 +16,16 @@ class SachModel extends CI_Model{
 		return $data->result();
 	}
 	public function GetProduct() {
-		$data=$this->db->get('products');
+		$data=$this->db->get('products',8);
 	//		$data=$this->db->get("slide",4);
 		return $data->result();
 	}
-	public function Getslidesp() {
-		$data=$this->db->get('products',3);
-	//		$data=$this->db->get("slide",4);
+	
+	public function NewProduct() {
+		$data = $this->db->query("SELECT * FROM products ORDER BY id DESC LIMIT 4");
 		return $data->result();
 	}
-	public function Getchisp() {
-		$data=$this->db->get('products',1);
-	//		$data=$this->db->get("slide",4);
-		return $data->result();
-	}
+
 	// lấy mot san pham 
 	public function SelectProduct($id) {
 			
@@ -96,5 +92,24 @@ class SachModel extends CI_Model{
 		$this->db->update("products",$data);
 		
 	}
+
+	function insert_crud($data) {
+		$this->db->insert('products',$data);
+	}
+
+	 function get_filtered_data(){  
+           $this->make_query();  
+           $query = $this->db->get();  
+           return $query->num_rows();  
+      } 
+
+        function get_all_data()  
+      {  
+           $this->db->select("*");  
+           $this->db->from($this->table);  
+           return $this->db->count_all_results();  
+      } 
+
+      
 
 }

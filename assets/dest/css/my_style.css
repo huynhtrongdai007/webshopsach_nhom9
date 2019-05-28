@@ -7,11 +7,11 @@ html, body {
 
 }
 
-img {
+/*img {
 	width: 200px;
 	height: 200px;
 	border-radius: 100%;
-}
+}*/
 
 .card-body h4{
 	font-family: Gamja Flower;
@@ -33,4 +33,26 @@ border: 3px solid #ccc;
 background-color:rgba(82,64,120,0.9)!important;
 }
 
+.border-product {
+	width: 210px;
+	height: 300px;
+	border:3px solid #ccc;
 
+
+}
+
+.border-product:hover {
+	background-color: #ccc;
+	
+}
+
+.product img{
+	margin:10px 12px;
+	width: 180px;
+	height: 270px;
+	
+}
+
+.card {
+	margin-bottom: 10px;
+}

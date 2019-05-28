@@ -4,10 +4,19 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/style.css">
-     <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
-<!--   <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/script.js"></script -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
+         <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
+             
+
+   <!-- DataTables -->
+  <!-- DataTables -->
+<!--   <link rel="stylesheet" 
+    type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
+  <script type="text/javascript" 
+    charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">    
+  </script> -->
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 
 </head>
 <body>
