@@ -99,6 +99,11 @@ class SachController extends CI_Controller {
 	public function Admin() {
 		$this->load->view("admin/index");
 	}
+	public function quanadim()
+	{
+		$this->load->view("admin/Quanliadmin");
+	}
+	
 
 	public function User() {
 		$this->load->view("admin/user");
@@ -226,5 +231,6 @@ public function updated(){
 public function	update_filse(){
 		$this->Updateproduct();
 	}
+
 	
 }
