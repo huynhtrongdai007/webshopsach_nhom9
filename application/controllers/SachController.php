@@ -40,19 +40,9 @@ class SachController extends CI_Controller
 	public function Process(){
 		
 
-
-	public function Process()
-	{
-		$this->load->library('session');
-		$post = $this->input->post(null,TRUE);
-		if(isset($post['submit'])){
-			$this->load->model('SachModel');
-			$query=$this->SachModel->Login($post);
-			if ($query->num_rows()>0) {
-				$data = array(
-					'full_name' => $this->input->post('username'),
-					'password' =>$this->input->post('password'),);
-
+ 
+	
+	
 
 		$email=$this->input->post('username',TRUE);
     	$password= $this->input->post('password',TRUE);
@@ -85,7 +75,7 @@ class SachController extends CI_Controller
 		        // access login for author
 		        }else
 		        {
-		            $this->index();
+		             redirect(base_url().'Index/Trangchu');
 		        }
     		}
     		else {
