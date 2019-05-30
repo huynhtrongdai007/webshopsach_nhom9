@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SachController extends CI_Controller {
+class SachController extends CI_Controller 
+{
 
 
 // trang chu
@@ -11,6 +12,7 @@ class SachController extends CI_Controller {
 	// 	$data = $this->sachModel->GetProduct();
 	// 	$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
 	// }
+	
 	public function Product_type() {
 		$this->load->model("sachModel");
 		$data = $this->sachModel->GetProduct();
@@ -34,7 +36,9 @@ class SachController extends CI_Controller {
 	public function Login() {
  		$this->load->view("web/login",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
 	}
-	public function Process(){
+
+	public function Process()
+	{
 		$this->load->library('session');
 		$post = $this->input->post(null,TRUE);
 		if(isset($post['submit'])){
@@ -186,9 +190,7 @@ class SachController extends CI_Controller {
 		
 	}
 
-	function fetch_product() {
-      	$this->load->modal("SachModel");
-      }
+
 
 	public function upload_validation() {
 				$id=$this->input->post("hidden_id");
@@ -234,7 +236,7 @@ public function	update_filse(){
 	}
 
 	
-}
+
 
 
 // model form add product
@@ -256,6 +258,7 @@ function product_action() {
 }
 
 function upload_image() {
+
 	if (isset($_FILES["product_image"])) {
 		$extension  = explode('.', $_FILES['product_image']['name']);
 		$new_name = rand().'.'.$extension[1];
@@ -263,7 +266,34 @@ function upload_image() {
 		move_uploaded_file($_FILES['poduct_image']['tmp_name'], $destination);
 		return $new_name;
 	}
+
 }
 
+    function fetch_product() {
+    //	echo "string";
+      $this->load->model("Model_Form");
+      $fetch_data = $this->Model_Form->make_datatables();
+      $data = array();
+     foreach($fetch_data as $row)  
+           {  
+                $sub_array = array();  
+                $sub_array[] = $row->name;  
+                $sub_array[] = $row->unit_price;
+                $sub_array[] = $row->promotion_price;  
+                $sub_array[] = '<img src="'.base_url().'uploads/'.$row->image.'" class="img-thumbnail" width="50" height="35" />';  
+                $sub_array[] = '<button type="button" name="update" id="'.$row->id.'" class="btn btn-warning btn-xs">Update</button>';  
+                $sub_array[] = '<button type="button" name="delete" id="'.$row->id.'" class="btn btn-danger btn-xs">Delete</button>';  
+                $data[] = $sub_array;  
+           }
+           $output = array(  
+                "draw"                =>     intval($_POST["draw"]),  
+                "recordsTotal"        =>      $this->Model_Form->get_all_data(),  
+                "recordsFiltered"     =>     $this->Model_Form->get_filtered_data(),  
+                "data"                =>     $data  
+           );  
+           echo json_encode($output);    
+  }
+
+}
 
 

@@ -2,19 +2,21 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/style.css">
-  <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
-         <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
+<!-- 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/bootstrap.min.css">
+	
+  <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+    <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+      <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+      <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
+           <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>   -->
+     
+     
              
 
-   <!-- DataTables -->
-  <!-- DataTables -->
-<!--   <link rel="stylesheet" 
-    type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
-  <script type="text/javascript" 
-    charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">    
-  </script> -->
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 
@@ -33,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarReponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url();?>sachController/admin">Home</a>
+                    <a class="nav-link" href="<?=base_url();?>SachController/admin">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>
