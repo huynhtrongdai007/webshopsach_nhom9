@@ -10,7 +10,6 @@
  	 <form action="<?=base_url();?>sachController/InsertProduct" method="POST" enctype="multipart/form-data">
 
  	 	<table id="table-add-product">
-
  	 		 <tr>
  	 		 	<td>Name:</td>
  	 		 	<td><input type="text" size="25" name="name_product"></td>

@@ -7,13 +7,13 @@
 	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/vendors/colorbox/example3/colorbox.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/rs-plugin/css/settings.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/rs-plugin/css/responsive.css">
 	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/style.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/animate.css">
 	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/huong-style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
 
@@ -28,7 +28,9 @@
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"></i> </a></li>
+						<li><a href="#"><i class="fa fa-user"><?php if ($this->session->userdata('logged_in') !== TRUE) {
+							echo $_SESSION['full_name'];
+						}?></i></a></li>
 						<li><a href="<?=base_url();?>SachController/signup">Đăng kí</a></li>
 						<li><a href="<?=base_url();?>SachController/Login">Đăng nhập</a></li>
 					</ul>

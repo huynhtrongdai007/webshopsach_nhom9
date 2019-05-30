@@ -25,7 +25,7 @@
                  <p>Product</p>
              </div>    
               <div class="khung">
-                 <a href="#">
+                 <a href="<?=base_url();?>SachController/quanadim">
                      <div class="select">
                      <i class="fas fa-cogs"></i>
                  </div>

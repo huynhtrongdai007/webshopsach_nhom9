@@ -5,12 +5,12 @@ class SachController extends CI_Controller {
 
 
 // trang chu
-	public function Index() {
-		$this->load->model("sachModel");
-		$data = $this->sachModel->getslide();	
-		$data = $this->sachModel->GetProduct();
-		$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
-	}
+	// public function Index() {
+	// 	$this->load->model("sachModel");
+	// 	$data = $this->sachModel->getslide();	
+	// 	$data = $this->sachModel->GetProduct();
+	// 	$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
+	// }
 	public function Product_type() {
 		$this->load->model("sachModel");
 		$data = $this->sachModel->GetProduct();
@@ -19,9 +19,8 @@ class SachController extends CI_Controller {
 	}
 
         public function Product() {
-        	$this->load->model("sachModel");
-		$data = $this->sachModel->GetProduct();
-        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer','data'=>$data]);
+        	
+        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
         }
 
      
@@ -36,29 +35,55 @@ class SachController extends CI_Controller {
  		$this->load->view("web/login",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
 	}
 	public function Process(){
-		$this->load->library('session');
-		$post = $this->input->post(null,TRUE);
-		if(isset($post['submit'])){
-			$this->load->model('SachModel');
-			$query=$this->SachModel->Login($post);
-			if ($query->num_rows()>0) {
-				$data = array(
-					'full_name' => $this->input->post('username'),
-					'password' =>$this->input->post('password'),);
+		
+
+		$email=$this->input->post('username',TRUE);
+    	$password= $this->input->post('password',TRUE);
+    	$this->load->model('SachModel');
+
+    	$validate = $this->SachModel->Login($email,$password);
+    	//print_r($validate);
+			//echo "0000";
+		 	if($validate->num_rows() > 0)
+    		{
+		        $data  = $validate->row_array();
+		        $name  = $data['full_name'];
+		        $email = $data['email'];
+		        $level = $data['level'];
+		        $sesdata = array(
+		       		'full_name' =>$name,
+		            'email'  => $email,
+		            'level'     => $level,
+		            'logged_in' => TRUE
+		            
+		        );
+		       
+		        $this->session->set_userdata($sesdata);
+		     
+
+		        if($level==='1')
+		        {
+		            redirect(base_url().'SachController/Admin');
+		 
+		        // access login for author
+		        }else
+		        {
+		            $this->index();
+		        }
+    		}
+    		else {
+    			echo $this->session->set_flashdata('msg','Username or Password is Wrong');
+    			 redirect(base_url().'SachController/LoginFail');
+    		}	
+
+
+			
+		
+	}
+
+
 
 	
-			}else{
-				redirect(base_url()."SachController/LoginFail");
-				$this->login();
-			}
-		}
-
-		
- 		$this->load->view("web/login",['header'=>'web/templates/header']);
-
-
-
-	}
 	public function LoginFail(){
 		$this->login();
 	}
@@ -81,8 +106,6 @@ class SachController extends CI_Controller {
 			"phone"=>$this->input->post("phone"),
 			"email"=>$this->input->post("password")
 		);
-		
-
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
 		}else{
@@ -99,6 +122,11 @@ class SachController extends CI_Controller {
 	public function Admin() {
 		$this->load->view("admin/index");
 	}
+	public function quanadim()
+	{
+		$this->load->view("admin/Quanliadmin");
+	}
+	
 
 	public function User() {
 		$this->load->view("admin/user");
@@ -182,7 +210,9 @@ class SachController extends CI_Controller {
 		
 	}
 
-	
+	function fetch_product() {
+      	$this->load->modal("SachModel");
+      }
 
 	public function upload_validation() {
 				$id=$this->input->post("hidden_id");
@@ -226,5 +256,38 @@ public function updated(){
 public function	update_filse(){
 		$this->Updateproduct();
 	}
+
 	
 }
+
+
+// model form add product
+
+function product_action() {
+	if ($_POST["action"] == "Add") {
+		$insert_data = array(
+			'name' => $this->input->post('name'),
+			'description' => $this->input->post('description'),
+			'unit_price'=> $this->input->post('unit_price'),
+			'promotion_price'=> $this->input->post('promotion_price'),
+			'image'			=>$this->upload_image(),
+			'unit' =>$this->input->post('unit')
+		);
+		$this->load->modal("SachModel");
+		$this->SachModel->insert_crud($insert_data);
+		echo "Data Inserted";
+	}
+}
+
+function upload_image() {
+	if (isset($_FILES["product_image"])) {
+		$extension  = explode('.', $_FILES['product_image']['name']);
+		$new_name = rand().'.'.$extension[1];
+		$destiantion = './uploads/'.$new_name;
+		move_uploaded_file($_FILES['poduct_image']['tmp_name'], $destination);
+		return $new_name;
+	}
+}
+
+
+
