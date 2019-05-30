@@ -1,9 +1,10 @@
  <?php  
- class Sach_model extends CI_Model  
+ class Model_Form extends CI_Model  
  {  
-      var $table = "product";  
-      var $select_column = array("id", "name", "last_name", "image");  
-      var $order_column = array(null, "name", "last_name", null, null);  
+      var $table = "products";  
+      var $select_column = array("id", "name", "unit_price", "promotion_price","image");  
+      var $order_column = array(null, "name", "unit_price", "promotion_price", "image");
+
       function make_query()  
       {  
            $this->db->select($this->select_column);  
@@ -11,7 +12,7 @@
            if(isset($_POST["search"]["value"]))  
            {  
                 $this->db->like("name", $_POST["search"]["value"]);  
-                 $this->db->or_like("price", $_POST["search"]["value"]);  
+                //$this->db->or_like("unit_price", $_POST["search"]["value"]);  
            }  
            if(isset($_POST["order"]))  
            {  
@@ -21,7 +22,8 @@
            {  
                 $this->db->order_by('id', 'DESC');  
            }  
-      }  
+      } 
+
       function make_datatables(){  
            $this->make_query();  
            if($_POST["length"] != -1)  
@@ -31,6 +33,7 @@
            $query = $this->db->get();  
            return $query->result();  
       }  
+
       function get_filtered_data(){  
            $this->make_query();  
            $query = $this->db->get();  
