@@ -8,7 +8,7 @@ class Index extends CI_Controller {
 		$this->load->model('SachModel');
 		$data=$this->SachModel->GetProduct();
 		$newproduct=$this->SachModel->NewProduct();
-		$this->load->view('web/index',['List_Product'=>'web/templates/List_Product','data'=>$data,'New_Product'=>'web/templates/New_Product','newproduct'=>$newproduct]);
+		$this->load->view('web/index',['header'=>'web/templates/header','List_Product'=>'web/templates/List_Product','data'=>$data,'New_Product'=>'web/templates/New_Product','newproduct'=>$newproduct]);
 	}
 
 	

@@ -1,19 +1,21 @@
 <!doctype html>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>WebbShopSach</title>
+	<title>WebShopSach</title>
 	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/vendors/colorbox/example3/colorbox.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/rs-plugin/css/settings.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/rs-plugin/css/responsive.css">
 	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/style.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/animate.css">
 	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/huong-style.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/dest/css/my_style.css">
 </head>
 <body>
 
@@ -22,17 +24,32 @@
 			<div class="container">
 				<div class="pull-left auto-width-left">
 					<ul class="top-menu menu-beta l-inline">
-						<li><a href=""><i class="fa fa-home"></i> Công viên phần mềm Quang, Trung, P, Quận 12, Hồ Chí Minh 710000, Việt Nam</a></li>
-						<li><a href=""><i class="fa fa-phone"></i> 0869602147</a></li>
+						<li><a href=""><i class="fa fa-home"></i> 90-92 Lê Thị Riêng, Bến Thành, Quận 1</a></li>
+						<li><a href=""><i class="fa fa-phone"></i> 0163 296 7751</a></li>
 					</ul>
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"><?php if ($this->session->userdata('logged_in') !== TRUE) {
-							echo $_SESSION['full_name'];
-						}?></i></a></li>
-						<li><a href="<?=base_url();?>SachController/signup">Đăng kí</a></li>
-						<li><a href="<?=base_url();?>SachController/Login">Đăng nhập</a></li>
+				
+
+					<?php
+					 if ($this->session->userdata('logged_in') != TRUE)
+					 {
+					 	?>
+						<li><a href='<?php echo base_url()?>SachController/signup'>Đăng kí</a></li>
+						<li><a href='<?php echo base_url()?>SachController/Login'>Đăng nhập</a></li>		
+						<?php	
+						}
+							else
+							{
+							?>	
+							 <li><a href='#'><i class='fa fa-user'></i><?php echo $_SESSION['full_name'] ?></a></li>
+							 <li><a href='<?php echo base_url()?>SachController/logout'>Logout</a></li>
+							<?php
+							}
+						 ?>
+						
+							
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -69,7 +86,7 @@
 
 								<div class="cart-item">
 									<div class="media">
-										<a class="pull-left" href="#"><img src="assets/dest/image/product/" alt=""></a>
+										<a class="pull-left" href="#"><img src="assets/dest/images/products/cart/2.png" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">Sample Woman Top</span>
 											<span class="cart-item-options">Size: XS; Colar: Navy</span>
@@ -111,15 +128,15 @@
 				<div class="visible-xs clearfix"></div>
 				<nav class="main-menu">
 					<ul class="l-inline ov">
-						<li><a href="<?=base_url();?>Index.php">Trang chủ</a></li>
+						<li><a href="index.html">Trang chủ</a></li>
 						<li><a href="#">Sản phẩm</a>
 							<ul class="sub-menu">
-								<li><a href="<?=base_url();?>SachController/product_type">Sản phẩm 1</a></li>
-								<li><a href="<?=base_url();?>SachController/product_type">Sản phẩm 2</a></li>
-								
+								<li><a href="product_type.html">Sản phẩm 1</a></li>
+								<li><a href="product_type.html">Sản phẩm 2</a></li>
+								<li><a href="product_type.html">Sản phẩm 4</a></li>
 							</ul>
 						</li>
-						<li><a href="<?=base_url();?>SachController/About">About</a></li>
+						<li><a href="about.html">Giới thiệu</a></li>
 						<li><a href="contacts.html">Liên hệ</a></li>
 					</ul>
 					<div class="clearfix"></div>

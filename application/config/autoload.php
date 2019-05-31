@@ -62,10 +62,7 @@ $autoload['packages'] = array();
 
 $autoload['libraries'] = array('database','session','form_validation');
 
-$autoload['libraries'] = array('database','session');
 
-
-$autoload['libraries'] = array('database','session');
 
 
 /*
@@ -119,7 +116,7 @@ $autoload['config'] = array();
 | -------------------------------------------------------------------
 | Prototype:
 |
-|	$autoload['language'] = array('lang1', 'lang2');
+		|	$autoload['language'] = array('lang1', 'lang2');
 |
 | NOTE: Do not include the "_lang" part of your file.  For example
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
