@@ -1,4 +1,7 @@
+
 <?php $this->load->view($header) ?>
+
+
 	<div class="rev-slider">
 	<div class="fullwidthbanner-container">
 					<div class="fullwidthbanner">

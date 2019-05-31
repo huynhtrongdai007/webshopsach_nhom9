@@ -38,6 +38,15 @@ class SachController extends CI_Controller
 	}
 
 	public function Process(){
+
+
+		
+
+ 
+	
+	
+
+
 		$email=$this->input->post('username',TRUE);
     	$password= $this->input->post('password',TRUE);
     	$this->load->model('SachModel');
@@ -69,7 +78,11 @@ class SachController extends CI_Controller
 		        // access login for author
 		        }else
 		        {
+
 		            redirect(base_url().'Index/Trangchu');
+
+		             redirect(base_url().'Index/Trangchu');
+
 		        }
     		}
     		else {
