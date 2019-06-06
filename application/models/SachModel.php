@@ -52,14 +52,20 @@ class SachModel extends CI_Model{
 		$data = $this->db->query("SELECT * FROM products WHERE id = '$id'");
 		return $data->result_array();
 	}
-	public function Login($post){
-		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->where('full_name',$post['username']);
-		$this->db->where('password',$post['password']);
-		$query =$this->db->get();
-		return $query;
+	public function Login($email,$password){
+		$this->db->where('email',$email);
+		$this->db->where('password',$password);
+		$reuslt =$this->db->get('users');
+		return $reuslt;
 
+		// $this->db->select('*');
+		// $this->db->from('users');
+		// $this->db->where('email',$username);
+		// $this->db->where('password',$password);
+		// $this->db->where('level',$level);
+		//$query =$this->db->get();
+		// $query=$this->query("SELECT * FROM users WHERE email = $email and password = $password");
+		//  return $query->result_array();
 	}
 
 
@@ -72,9 +78,8 @@ class SachModel extends CI_Model{
             return $data->result();
 		
 	}
-	function Insert_User($data) {
+	public function Insert_User($data) {
 		$this->db->insert("users",$data);
-		
 	}
 
 	function Insert_Product($data) {

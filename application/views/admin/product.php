@@ -10,7 +10,12 @@
 
     <table id="product_data" class="table table-dark table-hover table-bordered table-striped">
     <thead>
+    <table class="table table-dark table-hover table-striped" id="users">
+    <thead class="name">
+        <th>STT</th>
+        <th>ID</th>
         <th>Tên Sách</th>
+        <th>Mô tả</th>
         <th>giá</th>
         <th> Giá khuến mãi</th>
         <th>Đơn Vị</th>
@@ -30,9 +35,43 @@
             <td><a href="#" id="<?=$value->id?>" class="btn btn-danger delete_data">Delete</a></td>
         </tr>
         <?php endforeach; ?>
+        <th> Giákhuến mãi</th>
+        <th>Hình ảnh</th>
+        <th><a href="<?=base_url();?>sachController/addProduct">Them san pham</a></th>
+
+    </thead>
+    <tbody>
+         <?php $stt=1; ?>
+        <?php foreach ($data as $product):?>
+        <tr>
+            <td><?= $stt; ?></td>
+            <td><?= $product->id ?></td>
+            <td><?= $product->name;?></td>
+            <td><?= $product->description;?></td>
+            <td><?= number_format($product->unit_price);?></td>
+            <td><?= number_format($product->promotion_price);?></td>
+            <td><img src="<?=base_url();?>uploads/<?=$product->image;?>" width="80"></td>
+            <td><a class=" btn btn-primary" href="<?=base_url();?>SachController/Updateproduct?id=<?=$product->id; ?>" >update</a></td>
+            <td><a href="#" class=" btn btn-primary delete_data" id="<?=$product->id;?>">delete</a></td>
+        <?php $stt++; ?>
+        </tr>
+         
+        <?php endforeach;?>
+        
     </tbody>
 </table>
-
+ <script type="text/javascript">
+            $(document).ready(function(){
+                $('.delete_data').click(function(){
+                    var id = $(this).attr("id");
+                if (confirm("Bạn có chắc muốn xóa dòng dữ liệu này?")) {
+                    window.location="<?= base_url();?>SachController/delete_data/"+id;    
+                }else{
+                    return false;
+                }
+                });       
+            });
+    </script>   
 </div>
 
 
@@ -42,7 +81,7 @@
 
     /*them san pham*/
     $('#productModal').on('shown.bs.modal', function (event) {
-                var button = $(event.relatedTarget) ;// Button that triggered the modal
+                var button = $(event.relatedTarget) ;
 
          var extension = $('#product_image').val().split('.').pop().toLowerCase();  
            if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
@@ -81,7 +120,6 @@
                     }
           });
     });
-    /*--------------------------------------------------------*/
     
     
 </script>
@@ -93,7 +131,7 @@
                 var id = $(this).attr("id");  
                 if(confirm("Are you sure you want to delete this?"))  
                 {  
-                   // window.location="<?=base_url(); ?>SachController/Delete_data/"+id; 
+            
                    $.ajax({
                               url:base_url+'SachController/Delete_data/'+id,
                               data:{id:id},
@@ -126,5 +164,6 @@
       });
 </script>
 <?php
+ <?php 
     include'templates/footer.php';
  ?>

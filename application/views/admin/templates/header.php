@@ -19,7 +19,9 @@
     <nav class="container-fluid">
         <a class="navbar-brand" href="#">
             <img class="avatar mr-3" src="<?=base_url();?>img/team/meo.jpg" height="50">
-            <h4 class="mt-3">Kimdaihuynh</h4>  
+            <h4 class="mt-3"><?php if ($this->session->userdata('logged_in') !== TRUE) {
+               echo $_SESSION['full_name'];
+            } ?></h4>  
         </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarReponsive">  

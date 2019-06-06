@@ -10,14 +10,84 @@ class SachController extends CI_Controller
 	public function User() {
 		$this->load->model("SachModel");
 		$data = $this->SachModel->GetAllUser();
-		// $list_cat = json_encode( $this->SachModel->allCat());
 		$this->load->view("admin/user",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
 	}
+
 	function detail_user($id)
 	{
 		$this->load->model("SachModel");
 		$row = $this->SachModel->detail_users($id);
 		echo json_encode($row);
+
+
+	public function Process(){
+
+
+		
+
+ 
+	
+	
+
+
+		$email=$this->input->post('username',TRUE);
+    	$password= $this->input->post('password',TRUE);
+    	$this->load->model('SachModel');
+
+    	$validate = $this->SachModel->Login($email,$password);
+
+		 	if($validate->num_rows() > 0)
+    		{
+		        $data  = $validate->row_array();
+		        $name  = $data['full_name'];
+		        $email = $data['email'];
+		        $level = $data['level'];
+		        $sesdata = array(
+		       		'full_name' =>$name,
+		            'email'  => $email,
+		            'level'     => $level,
+		            'logged_in' => TRUE
+		            
+		        );
+		       
+		        $this->session->set_userdata($sesdata);
+		     
+
+		        if($level==='1')
+		        {
+		            redirect(base_url().'SachController/Admin');
+		 
+		        // access login for author
+		        }else
+		        {
+
+		            redirect(base_url().'Index/Trangchu');
+
+		             redirect(base_url().'Index/Trangchu');
+
+		        }
+    		}
+    		else {
+    			echo $this->session->set_flashdata('msg','Username or Password is Wrong');
+    			 redirect(base_url().'SachController/LoginFail');
+    		}	
+
+
+			
+		
+	}
+	public function logout(){
+		$this->session->sess_destroy();
+		  redirect(base_url().'Index/Trangchu');
+
+	}
+
+
+
+	
+	public function LoginFail(){
+		$this->login();
+
 	}
 	function save()
 	{
@@ -31,9 +101,16 @@ class SachController extends CI_Controller
 			'level'=>$this->input->post('level'),
 
 		);
+
 		$message = $this->SachModel->update_user($this->input->post('user_id'), $data);
 
 		echo json_encode($message);
+
+			$this->SachModel->Insert_User($data);
+			redirect(base_url()."sachController/inserted");
+		}else{
+			$this->signup();
+		}
 	}
 	public function delete_datauser() {
 		// $id=$_GET["id"];
@@ -72,7 +149,6 @@ class SachController extends CI_Controller
 			"unit"=>$this->input->post("unit")
 		);
 
-//print_r($data);exit;
 			$data['image']=$this->SachModel->Upload_Image();
 			$this->SachModel->insert_product($data);
 
@@ -240,7 +316,6 @@ class SachController extends CI_Controller
 public function delete_Catory() {
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
-		// $data = 'id'=>$this->input->post('cat_id');
 		if($this->SachModel->delete_Catory($id))
 			$message = "delete catory susscess";	
 		
