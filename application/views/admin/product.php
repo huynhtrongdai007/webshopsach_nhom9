@@ -12,10 +12,8 @@
     <thead>
     <table class="table table-dark table-hover table-striped" id="users">
     <thead class="name">
-        <th>STT</th>
-        <th>ID</th>
+
         <th>Tên Sách</th>
-        <th>Mô tả</th>
         <th>giá</th>
         <th> Giá khuến mãi</th>
         <th>Đơn Vị</th>
@@ -23,31 +21,13 @@
         <th>Update</th>
         <th>Delete</th>
     </thead>
-    <tbody>
-        <?php foreach ($data as $value):?>
-        <tr>
-            <td><?=$value->name?></td>
-            <td><?=$value->promotion_price?></td>
-            <td><?=$value->unit_price?></td>
-            <td><?=$value->unit?></td>
-            <td><img width="80" src="<?=base_url();?>uploads/<?=$value->image?>"></td>
-            <td><a href="#" class="btn btn-warning">Update</a></td>
-            <td><a href="#" id="<?=$value->id?>" class="btn btn-danger delete_data">Delete</a></td>
-        </tr>
-        <?php endforeach; ?>
-        <th> Giákhuến mãi</th>
-        <th>Hình ảnh</th>
-        <th><a href="<?=base_url();?>sachController/addProduct">Them san pham</a></th>
-
     </thead>
     <tbody>
          <?php $stt=1; ?>
         <?php foreach ($data as $product):?>
         <tr>
-            <td><?= $stt; ?></td>
-            <td><?= $product->id ?></td>
+            <td><?= $stt;?></td>
             <td><?= $product->name;?></td>
-            <td><?= $product->description;?></td>
             <td><?= number_format($product->unit_price);?></td>
             <td><?= number_format($product->promotion_price);?></td>
             <td><img src="<?=base_url();?>uploads/<?=$product->image;?>" width="80"></td>
@@ -164,6 +144,5 @@
       });
 </script>
 <?php
- <?php 
     include'templates/footer.php';
  ?>

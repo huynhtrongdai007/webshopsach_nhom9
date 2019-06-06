@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SachController extends CI_Controller 
 {
 
-  	public function Admin() {
+  	 function Admin() {
 		$this->load->view("admin/index");
 	}   
-	public function User() {
+	 function User() {
 		$this->load->model("SachModel");
 		$data = $this->SachModel->GetAllUser();
 		$this->load->view("admin/user",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
@@ -20,15 +20,7 @@ class SachController extends CI_Controller
 		echo json_encode($row);
 
 
-	public function Process(){
-
-
-		
-
- 
-	
-	
-
+		 function Process(){
 
 		$email=$this->input->post('username',TRUE);
     	$password= $this->input->post('password',TRUE);
@@ -76,7 +68,7 @@ class SachController extends CI_Controller
 			
 		
 	}
-	public function logout(){
+	 function logout(){
 		$this->session->sess_destroy();
 		  redirect(base_url().'Index/Trangchu');
 
@@ -85,7 +77,7 @@ class SachController extends CI_Controller
 
 
 	
-	public function LoginFail(){
+	 function LoginFail(){
 		$this->login();
 
 	}
@@ -108,11 +100,11 @@ class SachController extends CI_Controller
 
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
-		}else{
-			$this->signup();
 		}
+			$this->signup();
+		
 	}
-	public function delete_datauser() {
+	 function delete_datauser() {
 		// $id=$_GET["id"];
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
@@ -122,14 +114,14 @@ class SachController extends CI_Controller
 
 	
 
-	public function Products() {
+	 function Products() {
 		$this->load->model("SachModel");
 		$data=$this->SachModel->GetProduct();
 		$this->load->view("admin/product",['data'=>$data]);
 	}
 
 
-	public function InsertProduct() {
+	 function InsertProduct() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules("name", "Name_Product" ,"required");
 		$this->form_validation->set_rules("description", "Description" ,"required");
@@ -161,7 +153,7 @@ class SachController extends CI_Controller
 	}
 
 	
-	public function InsertedAddProduct() {
+	 function InsertedAddProduct() {
 		$this->AddProduct();
 	}
 
@@ -169,20 +161,19 @@ class SachController extends CI_Controller
 
 
 
-	public function Updateproduct() {
+	 function Updateproduct() {
 			$this->load->model("SachModel");
 				$id=$_GET["id"];
 				$data=$this->SachModel->SelectProduct($id); 
 			
 			$this->load->model("SachModel");
-			$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','data'=>$data,'id'=>$id]
-		);
+			$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','data'=>$data,'id'=>$id]);
 		
 	}
 
 
 
-	public function upload_validation() 
+	 function upload_validation() 
 	{
 				$id=$this->input->post("hidden_id");
 					if ($this->input->post("update")) {
@@ -218,12 +209,12 @@ class SachController extends CI_Controller
 	}
 
 
-	public function updated()
+	 function updated()
 	{
 			$this->updateproduct();
 	}
 
-	public function	update_filse()
+	 function	update_filse()
 	{
 			$this->Updateproduct();
 	}
@@ -244,7 +235,7 @@ class SachController extends CI_Controller
 			redirect(base_url(). "SachController/Products");
 		}
 
-			public function Delete_data() {
+			 function Delete_data() {
 				$id = $this->uri->segment(3);
 				$this->load->model("Model_Form");
 			    $this->Model_Form->Delete_Data($id);
@@ -252,7 +243,7 @@ class SachController extends CI_Controller
 				redirect(base_url(). "SachController/deleted"); 
 
 			}
-				public function deleted() {
+				 function deleted() {
 
 						$this->Products();
 
@@ -272,7 +263,7 @@ class SachController extends CI_Controller
 
 		}
 
-		public function Catory(){
+		 function Catory(){
 		$this->load->model("SachModel");
 		$data=$this->SachModel->GetCatory();
 		$this->load->view("admin/catory.php",['data'=>$data]);
@@ -313,7 +304,7 @@ class SachController extends CI_Controller
 	echo json_encode($message);
 }
 
-public function delete_Catory() {
+ function delete_Catory() {
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
 		if($this->SachModel->delete_Catory($id))
