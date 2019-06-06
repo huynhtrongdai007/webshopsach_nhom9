@@ -4,113 +4,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SachController extends CI_Controller 
 {
 
-
-// trang chu
-	// public function Index() {
-	// 	$this->load->model("sachModel");
-	// 	$data = $this->sachModel->getslide();	
-	// 	$data = $this->sachModel->GetProduct();
-	// 	$this->load->view("web/Index",['header'=>'web/templates/header','footer'=>'web/templates/footer','web/product','slide'=>'web/templates/slide','sanpham'=>'web/templates/sanpham','data'=>$data]);
-	// }
-	
-	public function Product_type() {
-		$this->load->model("sachModel");
-		$data = $this->sachModel->GetProduct();
-		$data = $this->sachModel->GetProduct_type();
-		$this->load->view("web/product_type",['header'=>'web/templates/header','footer'=>'web/templates/footer','sanpham'=>'web/templates/sanpham','data'=>$data]);
-	}
-
-        public function Product() {
-        	
-        	$this->load->view("web/product",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
-        }
-
-     
-	public function About() {
-		$this->load->view("web/about");
-	}
-	public function SignUp() {
- 		$this->load->view("web/signup",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
-	}
-
-	public function Login() {
- 		$this->load->view("web/login",['header'=>'web/templates/header','footer'=>'web/templates/footer']);
-	}
-
-	public function Process()
-	{
-		$this->load->library('session');
-		$post = $this->input->post(null,TRUE);
-		if(isset($post['submit'])){
-			$this->load->model('SachModel');
-			$query=$this->SachModel->Login($post);
-			if ($query->num_rows()>0) {
-				$data = array(
-					'full_name' => $this->input->post('username'),
-					'password' =>$this->input->post('password'),);
-
-	
-			}else{
-				redirect(base_url()."SachController/LoginFail");
-				$this->login();
-			}
-		}
-
-		
- 		$this->load->view("web/login",['header'=>'web/templates/header']);
-
-
-
-	}
-	public function LoginFail(){
-		$this->login();
-	}
-
-// signup 
-
-	public function Form_validation() {
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules("email", "Email" ,"required");
-		$this->form_validation->set_rules("username", "Username" ,"required");
-		$this->form_validation->set_rules("address", "Address" ,"required");
-		$this->form_validation->set_rules("phone", "Phone" ,"required");
-		$this->form_validation->set_rules("password", "Password" ,"required");
-
-		if ($this->load->model("SachModel")) {
-			$data = array(
-			"email"=>$this->input->post("email"),
-			"full_name"=>$this->input->post("full_name"),
-			"address"=>$this->input->post("address"),
-			"phone"=>$this->input->post("phone"),
-			"email"=>$this->input->post("password")
-		);
-		
-
-			$this->SachModel->Insert_User($data);
-			redirect(base_url()."sachController/inserted");
-		}else{
-			$this->signup();
-		}
-	}
-
-
-	public function Inserted() {
-		$this->signup();
-	}
-
-// admin
-	public function Admin() {
+  	public function Admin() {
 		$this->load->view("admin/index");
-	}
-	public function quanadim()
-	{
-		$this->load->view("admin/Quanliadmin");
-	}
-	
-
+	}   
 	public function User() {
-		$this->load->view("admin/user");
+		$this->load->model("SachModel");
+		$data = $this->SachModel->GetAllUser();
+		// $list_cat = json_encode( $this->SachModel->allCat());
+		$this->load->view("admin/user",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
 	}
+	function detail_user($id)
+	{
+		$this->load->model("SachModel");
+		$row = $this->SachModel->detail_users($id);
+		echo json_encode($row);
+	}
+	function save()
+	{
+		$this->load->model("SachModel");
+		$data = array(
+			'full_name'=>$this->input->post('user_name'),
+			'email'=>$this->input->post('email'),
+			'password'=>$this->input->post('password'),
+			'address'=>$this->input->post('adress'),
+			'phone'=>$this->input->post('phone'),
+			'level'=>$this->input->post('level'),
+
+		);
+		$message = $this->SachModel->update_user($this->input->post('user_id'), $data);
+
+		echo json_encode($message);
+	}
+	public function delete_datauser() {
+		// $id=$_GET["id"];
+		$id = $this->uri->segment(3);
+		$this->load->model("SachModel");
+		$this->SachModel->delete_user($id);
+		redirect(base_url(). "sachController/User"); 
+	}
+
+	
 
 	public function Products() {
 		$this->load->model("SachModel");
@@ -118,16 +51,6 @@ class SachController extends CI_Controller
 		$this->load->view("admin/product",['data'=>$data]);
 	}
 
-
-	public function AddUser() {
-		$this->load->view("admin/adduser");
-	}
-
-	
-
-	public function AddProduct(){
-		$this->load->view('admin/addproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer']);
-	}
 
 	public function InsertProduct() {
 		$this->load->library('form_validation');
@@ -167,32 +90,24 @@ class SachController extends CI_Controller
 	}
 
 
-	public function delete_data() {
-		$id = $this->uri->segment(3);
-		$this->load->model("SachModel");
-		$this->SachModel->delete_data($id);
-		redirect(base_url(). "SachController/deleted"); 
-	}
-	public function deleted() {
-		$this->Products();
-	}
 
 
 
 	public function Updateproduct() {
-		$this->load->model("SachModel");
-			$id=$_GET["id"];
-			$data=$this->SachModel->SelectProduct($id); 
-		
-		$this->load->model("SachModel");
-		$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','data'=>$data,'id'=>$id]
-	);
+			$this->load->model("SachModel");
+				$id=$_GET["id"];
+				$data=$this->SachModel->SelectProduct($id); 
+			
+			$this->load->model("SachModel");
+			$this->load->view('admin/updateproduct',['header'=>'admin/templates/header','footer'=>'admin/templates/footer','data'=>$data,'id'=>$id]
+		);
 		
 	}
 
 
 
-	public function upload_validation() {
+	public function upload_validation() 
+	{
 				$id=$this->input->post("hidden_id");
 					if ($this->input->post("update")) {
 						$data = array(
@@ -227,73 +142,113 @@ class SachController extends CI_Controller
 	}
 
 
-public function updated(){
-		$this->updateproduct();
-}
-
-public function	update_filse(){
-		$this->Updateproduct();
+	public function updated()
+	{
+			$this->updateproduct();
 	}
 
-	
-
-
-
-// model form add product
-
-function product_action() {
-	if ($_POST["action"] == "Add") {
-		$insert_data = array(
-			'name' => $this->input->post('name'),
-			'description' => $this->input->post('description'),
-			'unit_price'=> $this->input->post('unit_price'),
-			'promotion_price'=> $this->input->post('promotion_price'),
-			'image'			=>$this->upload_image(),
-			'unit' =>$this->input->post('unit')
-		);
-		$this->load->modal("SachModel");
-		$this->SachModel->insert_crud($insert_data);
-		echo "Data Inserted";
-	}
-}
-
-function upload_image() {
-
-	if (isset($_FILES["product_image"])) {
-		$extension  = explode('.', $_FILES['product_image']['name']);
-		$new_name = rand().'.'.$extension[1];
-		$destiantion = './uploads/'.$new_name;
-		move_uploaded_file($_FILES['poduct_image']['tmp_name'], $destination);
-		return $new_name;
+	public function	update_filse()
+	{
+			$this->Updateproduct();
 	}
 
+		function Insert_Product() {
+			$this->load->model('Model_Form');
+			$data = array(
+				'name'=>$this->input->post('name'),
+				'description'=>$this->input->post('description'),
+				'unit_price'=>$this->input->post('unit_price'),
+				'promotion_price'=>$this->input->post('promotion_price'),
+				'unit'=>$this->input->post('unit'),
+				'image'=>$this->upload_image()
+			);
+			$message = $this->Model_Form->Insert_Product($data);
+			
+			echo json_encode($message);
+			redirect(base_url(). "SachController/Products");
+		}
+
+			public function Delete_data() {
+				$id = $this->uri->segment(3);
+				$this->load->model("Model_Form");
+			    $this->Model_Form->Delete_Data($id);
+
+				redirect(base_url(). "SachController/deleted"); 
+
+			}
+				public function deleted() {
+
+						$this->Products();
+
+				}
+
+		
+
+		function upload_image() {
+
+			if (isset($_FILES["product_image"])) {
+				$extension  = explode('.', $_FILES['product_image']['name']);
+				$new_name = rand().'.'.$extension[1];
+				$destiantion = './uploads/'.$new_name;
+				move_uploaded_file($_FILES['product_image']['tmp_name'], $destiantion);
+				return $new_name;
+			}
+
+		}
+
+		public function Catory(){
+		$this->load->model("SachModel");
+		$data=$this->SachModel->GetCatory();
+		$this->load->view("admin/catory.php",['data'=>$data]);
+	}
+
+		function new_catory()
+		{
+			$this->load->model("SachModel");
+			$data = array(
+				'name'=>$this->input->post('cat_name'),
+				'description'=>$this->input->post('description'),
+				
+			);
+			$message = $this->SachModel->Insert_Catory($data);
+
+			echo json_encode($message);
+		}
+
+
+	function detail_catory($id)
+	{
+		$this->load->model("SachModel");
+		$row = $this->SachModel->detail_catory($id);
+		echo json_encode($row);
+	}
+
+	function save_catory()
+{
+	$this->load->model("SachModel");
+	$data = array(
+		'id'=>$this->input->post('cat_id'),
+		'name'=>$this->input->post('cat_name'),
+		'description'=>$this->input->post('description'),
+		
+	);
+	$message = $this->SachModel->update_catory($this->input->post('cat_id'), $data);
+
+	echo json_encode($message);
 }
 
-    function fetch_product() {
-    //	echo "string";
-      $this->load->model("Model_Form");
-      $fetch_data = $this->Model_Form->make_datatables();
-      $data = array();
-     foreach($fetch_data as $row)  
-           {  
-                $sub_array = array();  
-                $sub_array[] = $row->name;  
-                $sub_array[] = $row->unit_price;
-                $sub_array[] = $row->promotion_price;  
-                $sub_array[] = '<img src="'.base_url().'uploads/'.$row->image.'" class="img-thumbnail" width="50" height="35" />';  
-                $sub_array[] = '<button type="button" name="update" id="'.$row->id.'" class="btn btn-warning btn-xs">Update</button>';  
-                $sub_array[] = '<button type="button" name="delete" id="'.$row->id.'" class="btn btn-danger btn-xs">Delete</button>';  
-                $data[] = $sub_array;  
-           }
-           $output = array(  
-                "draw"                =>     intval($_POST["draw"]),  
-                "recordsTotal"        =>      $this->Model_Form->get_all_data(),  
-                "recordsFiltered"     =>     $this->Model_Form->get_filtered_data(),  
-                "data"                =>     $data  
-           );  
-           echo json_encode($output);    
-  }
+public function delete_Catory() {
+		$id = $this->uri->segment(3);
+		$this->load->model("SachModel");
+		// $data = 'id'=>$this->input->post('cat_id');
+		if($this->SachModel->delete_Catory($id))
+			$message = "delete catory susscess";	
+		
+		else{
+			$message = "You cannot delete categories that are used";		}
 
+		echo json_encode($message);
+		
+	}
 }
-
 
