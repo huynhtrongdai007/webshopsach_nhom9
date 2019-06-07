@@ -11,7 +11,7 @@
 			<div class="card">
 					<h6 class="card-text display-5"><?=$value->name?></h5>
 					<h6>Gía: <?=$value->unit_price?> vnđ</h6>
-					<a href=""><i class="fas fa-shopping-cart"></i></a>
+					<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
 					<button type="button" class="btn btn-primary">Mua</button>
 				</div>
 		</div>

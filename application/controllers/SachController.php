@@ -20,15 +20,10 @@ class SachController extends CI_Controller
 		echo json_encode($row);
 
 
-	public function Process(){
+	 function Process(){
 
 
-		
-
- 
 	
-	
-
 
 		$email=$this->input->post('username',TRUE);
     	$password= $this->input->post('password',TRUE);
@@ -76,7 +71,7 @@ class SachController extends CI_Controller
 			
 		
 	}
-	public function logout(){
+	 function logout(){
 		$this->session->sess_destroy();
 		  redirect(base_url().'Index/Trangchu');
 
@@ -85,7 +80,7 @@ class SachController extends CI_Controller
 
 
 	
-	public function LoginFail(){
+	function LoginFail(){
 		$this->login();
 
 	}
@@ -108,7 +103,7 @@ class SachController extends CI_Controller
 
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
-		}else{
+		}	{
 			$this->signup();
 		}
 	}

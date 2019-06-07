@@ -14,7 +14,8 @@
 				<div class="card">
 					<p class="card-text"><?=$value->name?></p>
 					<p>Gía: <?=$value->unit_price?> vnđ</p>
-					<a href=""><i class="fas fa-shopping-cart"></i></a>
+					<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
+
 					<button type="button" class="btn btn-primary">Mua</button>
 				</div>
 			</div>
