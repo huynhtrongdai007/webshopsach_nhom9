@@ -5,20 +5,15 @@
 <!-- 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/bootstrap.min.css">
 	
   <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script> -->
-  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
-    <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
-  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-      <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-      <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-           <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>   -->
-     
-     
-             
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/jquery-3.1.0.js"></script>
+       <script type="text/javascript" src="<?=base_url();?>assets/admin/bootstrap/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
 
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+       <script type="text/javascript" src="<?=base_url();?>assets/admin/jquery/script.js"></script>
+   <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/admin/bootstrap/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 
 </head>
 <body>
@@ -27,7 +22,7 @@
         <a class="navbar-brand" href="#">
             <img class="avatar mr-3" src="<?=base_url();?>img/team/meo.jpg" height="50">
             <h4 class="mt-3"><?php if ($this->session->userdata('logged_in') !== TRUE) {
-               echo $_SESSION['full_name'];
+              
             } ?></h4>  
         </a>
         

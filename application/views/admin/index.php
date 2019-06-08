@@ -33,7 +33,7 @@
                  <p>Admin</p>
              </div>    
               <div class="khung">
-                 <a href="#">
+                 <a href="<?=base_url();?>SachController/Catory">
                      <div class="select">
                      <i class="fas fa-cubes"></i>
                  </div>

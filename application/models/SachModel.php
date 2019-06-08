@@ -10,13 +10,33 @@ class SachModel extends CI_Model{
 	public function GetAllUser() {
 		return $this->db->get('users')->result_array();
 	}
+	function detail_users($id)
+	{
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where(array('id'=>$id));
+		$data = $this->db->get();
+
+		//Tra ve 1 dong 
+		return $data->row_array();
+	}
+	function update_user($id,$data) {
+		$this->db->where("id",$id);
+		$this->db->update("users",$data);
+		return "Update Success";
+	}
+	function delete_User($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('users');
+	}
 	public function paGetProduct_type() {
 		$data=$this->db->get('type_products');
 		$data=$this->db->get('products',8);
 		return $data->result();
 	}
 	public function GetProduct() {
-		$data=$this->db->get('products',8);
+		$data=$this->db->get('products');
 	//		$data=$this->db->get("slide",4);
 		return $data->result();
 	}
@@ -120,6 +140,44 @@ class SachModel extends CI_Model{
            return $this->db->count_all_results();  
       } 
 
-      
+      function GetCatory(){
+		$data=$this->db->get('type_products');
+		return $data->result();
+	}
+
+	function Insert_Catory($data) {
+		//$data['image']=$this->upload_image();
+		$this->db->insert("type_products",$data);
+		return "Add New Success";
+	}
+	function detail_catory($id)
+	{
+		$this->db->select('*');
+		$this->db->from('type_products');
+		$this->db->where(array('id'=>$id));
+		$data = $this->db->get();
+		// echo $this->db->last_query();
+		//Tra ve 1 dong 
+		return $data->row_array();
+	}
+
+	function update_catory($id,$data) {
+		$this->db->where("id",$id);
+		$this->db->update("type_products",$data);
+		return "Update Success";
+	}
+	function delete_Catory($id) {
+		$this->db->where("id",$id);
+		try{
+			$error = 'Khong the xoa';
+			throw new Exception($error);
+			
+			$this->db->delete("type_products");}
+		catch(Exception $e){
+			return false;
+		}
+	
+		
+	}
 
 }
