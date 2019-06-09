@@ -23,7 +23,7 @@
  	 		 	<td><input type="text" size="25" name="unit_price"></td>
  	 		 </tr>
  	 		 <tr>
- 	 		 	<td>Giá Khuyến mãi:</td>
+ 	 		 	<td>Giảm giá:</td>
  	 		 	<td><input type="text" size="25" name="promotion_price"></td>
  	 		 </tr>
  	 		 <tr>

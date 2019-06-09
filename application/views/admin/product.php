@@ -1,39 +1,40 @@
 <?php 
     include'templates/header.php';
-    include'templates/Modal_Product.php'
+    include'templates/Modal_Product.php';
  ?>
 
 <div class="container mt-5">
 <h1 class="text-center display-4 color-tim">Danh Sách Sản Phẩm</h1>
 <hr class="w-50 bg-primary">
-<div class="ml-auto"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">Add-product</button></div>
+<div class="ml-auto"><button type="button" class="btn btn-primary MainNavText" data-toggle="modal" data-target="#productModal" id="MainNavHelp">Add-product</button></div>
 
     <table id="product_data" class="table table-dark table-hover table-bordered table-striped">
     <thead>
-    <table class="table table-dark table-hover table-striped" id="users">
-    <thead class="name">
+    <table class="table table-dark table-hover table-striped">
 
+    <thead class="name" >
+        <th>STT</th>
+        <th>ID</th>
         <th>Tên Sách</th>
         <th>giá</th>
-        <th> Giá khuến mãi</th>
-        <th>Đơn Vị</th>
+        <th> Giảm giá </th>
         <th>Hình ảnh</th>
         <th>Update</th>
         <th>Delete</th>
-    </thead>
-    </thead>
     <tbody>
          <?php $stt=1; ?>
         <?php foreach ($data as $product):?>
         <tr>
             <td><?= $stt;?></td>
+            <td><?= $product->id;?></td>
             <td><?= $product->name;?></td>
             <td><?= number_format($product->unit_price);?></td>
             <td><?= number_format($product->promotion_price);?></td>
             <td><img src="<?=base_url();?>uploads/<?=$product->image;?>" width="80"></td>
-            <td><a class=" btn btn-primary" href="<?=base_url();?>SachController/Updateproduct?id=<?=$product->id; ?>" >update</a></td>
-            <td><a href="#" class=" btn btn-primary delete_data" id="<?=$product->id;?>">delete</a></td>
-        <?php $stt++; ?>
+            <td>
+              <a href="#" class="btn btn-warning MainNavText" data-toggle="modal" data-target="#modal-update-product" data-whatever="<?php echo $product->id?>">update</a></td>
+            <td><a href="#" class="btn btn-danger delete_data" id="<?=$product->id;?>">delete</a></td>
+          <?php $stt++;?>
         </tr>
          
         <?php endforeach;?>
@@ -77,9 +78,8 @@
           
     });
 
-     
           $.ajax({
-                  url:base_url+'SachController/Insert_Product',
+                  url:base_url+'sachController/Insert_Product',
                   data:form, 
                   type:"POST",
                   processData: false,
@@ -100,8 +100,63 @@
                     }
           });
     });
-    
-    
+</script>
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url() ?>";
+   $('#modal-update-product').on('shown.bs.modal', function (event) {
+      var button = $(event.relatedTarget);// Button that triggered the modal
+      var id = button.data('whatever');
+      console.log(id);
+   $('#modal-update-product #id_product').val(id);
+   $.ajax({
+             url: base_url+"SachController/Product_id/"+id,
+             dataType:'json',
+             success:function(datareturn)
+             {
+                console.log(datareturn);
+                  $('#modal-update-product #id_product').val(datareturn.id);
+                  $('#modal-update-product #name_product').val(datareturn.name);
+                  $('#modal-update-product #description').val(datareturn.description);
+                  $('#modal-update-product #unit_price').val(datareturn.unit_price);
+                  $('#modal-update-product #promotion_price').val(datareturn.promotion_price);
+                  $('#modal-update-product #unit').val(datareturn.unit);
+                  $('#modal-update-product #image_0').attr("src",base_url+'./uploads/'+datareturn.image);
+                  $('#modal-update-product #product_image').val(datareturn.image);
+             },
+
+        });
+
+});
+  $("#modal-update-product #book_id").click(function()
+    {
+
+  var form = new FormData($('#update-product_form')[0]);
+  
+  $.ajax({
+          url:base_url+'SachController/Update_Product/',
+          data:form, 
+          type:"POST",
+          processData: false,
+          contentType: false,
+          success:function(dataReturn)
+          {
+            $('#modal-update-product').modal("hide");
+            setTimeout(function(){
+              alert(datareturn);
+              window.location.reload(true);
+            },500);
+      
+        //return false;
+    },
+    error: function(xhr, status, error) 
+            {
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+  });
+});
+
 </script>
 <script type="text/javascript">
     /*Delete_Product*/
