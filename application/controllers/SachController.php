@@ -7,10 +7,33 @@ class SachController extends CI_Controller
   	public function Admin() {
 		$this->load->view("admin/index");
 	}   
+	public function quanliadmin()
+	{
+		$this->load->model("SachModel");
+		$data = $this->SachModel->GetAlCustomer();
+		$this->load->view("admin/quanliadmin",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
+	}
+	public function delete_dataadmin() {
+		// $id=$_GET["id"];
+		$id = $this->uri->segment(3);
+		$this->load->model("SachModel");
+		$this->SachModel->delete_user($id);
+		redirect(base_url(). "sachController/quanliadmin"); 
+	}
 	public function User() {
 		$this->load->model("SachModel");
 		$data = $this->SachModel->GetAllUser();
+
 		$this->load->view("admin/user",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
+	}
+
+	public function product_type()
+	{
+		$this->load->model("SachModel");
+		$dataprodut=$this->SachModel->GetProduct();
+		$data=$this->SachModel->GetProduct_type();
+		$newproduct=$this->SachModel->NewProducttype();
+		$this->load->view("web/product_type",['header'=>'web/templates/header','NewProducttype'=>'web/templates/New_product','footer'=>'web/templates/footer','newproduct'=>$newproduct,'data'=>$data,'Caory'=>'web/templates/Catarory_produts','dataprodut'=>$dataprodut]);
 	}
 
 	function detail_user($id)
@@ -18,9 +41,13 @@ class SachController extends CI_Controller
 		$this->load->model("SachModel");
 		$row = $this->SachModel->detail_users($id);
 		echo json_encode($row);
-
-
-	 function Process(){
+}
+	public function login()
+	{
+		$this->load->view('web/login',['header'=>'web/templates/header']);
+	}
+	public function Process()
+	{
 
 
 	
@@ -101,11 +128,6 @@ class SachController extends CI_Controller
 
 		echo json_encode($message);
 
-			$this->SachModel->Insert_User($data);
-			redirect(base_url()."sachController/inserted");
-		}	{
-			$this->signup();
-		}
 	}
 	public function delete_datauser() {
 		// $id=$_GET["id"];
@@ -114,6 +136,7 @@ class SachController extends CI_Controller
 		$this->SachModel->delete_user($id);
 		redirect(base_url(). "sachController/User"); 
 	}
+
 
 	
 

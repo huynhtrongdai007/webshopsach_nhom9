@@ -1,7 +1,7 @@
  <?php  
  class Model_Form extends CI_Model  
  {  
-     function Insert_Product($data) {
+     function Insert_Product($date(format)ata) {
         $this->db->insert('products',$data);
         return "Add New Success";
      }

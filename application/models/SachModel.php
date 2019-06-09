@@ -6,6 +6,10 @@ class SachModel extends CI_Model{
 // 		return $this->db->get('book')->result_array();
 		
 // 	}
+public function GetAlCustomer()
+{
+	return $this->db->get('quanliadmin')->result_array();
+}
 
 	public function GetAllUser() {
 		return $this->db->get('users')->result_array();
@@ -30,9 +34,9 @@ class SachModel extends CI_Model{
 		$this->db->where('id', $id);
 		$this->db->delete('users');
 	}
-	public function paGetProduct_type() {
+	public function GetProduct_type() {
 		$data=$this->db->get('type_products');
-		$data=$this->db->get('products',8);
+		/*$data=$this->db->get('products',8);*/
 		return $data->result();
 	}
 	public function GetProduct() {
@@ -43,6 +47,10 @@ class SachModel extends CI_Model{
 	
 	public function NewProduct() {
 		$data = $this->db->query("SELECT * FROM products ORDER BY id DESC LIMIT 4");
+		return $data->result();
+	}
+	public function NewProducttype() {
+		$data = $this->db->query("SELECT * FROM products ORDER BY id_type DESC LIMIT 3");
 		return $data->result();
 	}
 
