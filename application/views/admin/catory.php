@@ -24,8 +24,8 @@
 	            <td><?= $value->id ?></td>
 	            <td><?= $value->name?></td>
 	            <td><?= $value->description?></td>
-	            <td> <a data-target="#edit-modal-catory" data-toggle="modal" class="MainNavText" data-whatever="<?php echo $value->id ?>" href="#">Update</a></td>
-	            <td><a data-target="#delete-modal-catory" data-toggle="modal" class="MainNavText" data-whatever="<?php echo $value->id ?>" href="#">delete</a></td>
+	            <td><a data-target="#edit-modal-catory" data-toggle="modal" class="MainNavText" data-whatever="<?php echo $value->id?>" href="#">Update</a></td>
+	            <td><a data-target="#delete-modal-catory" data-toggle="modal" class="MainNavText" data-whatever="<?php echo $value->id?>" href="#">delete</a></td>
 	        <?php $stt++; ?>
 	        </tr>
 	         
@@ -43,8 +43,8 @@
 		$('#edit-modal-catory').on('shown.bs.modal', function (event) {
 	  
 			  var button = $(event.relatedTarget) ;// Button that triggered the modal
-			  var id = button.data('whatever') ;
-			  $('#edit-modal-catory #Cat_id').val(id);
+			  var id = button.data('whatever');
+			  $('#edit-modal-catory #cat_id').val(id);
 			   $.ajax({
 			             url: base_url+"sachController/detail_catory/"+id,
 			             dataType:'json',

@@ -19,7 +19,7 @@ class SachController extends CI_Controller
 		$row = $this->SachModel->detail_users($id);
 		echo json_encode($row);
 
-
+	}
 		 function Process(){
 
 		$email=$this->input->post('username',TRUE);
@@ -54,18 +54,12 @@ class SachController extends CI_Controller
 		        {
 
 		            redirect(base_url().'Index/Trangchu');
-
-		             redirect(base_url().'Index/Trangchu');
-
 		        }
     		}
     		else {
     			echo $this->session->set_flashdata('msg','Username or Password is Wrong');
     			 redirect(base_url().'SachController/LoginFail');
-    		}	
-
-
-			
+    		}			
 		
 	}
 	 function logout(){
@@ -74,9 +68,6 @@ class SachController extends CI_Controller
 
 	}
 
-
-
-	
 	 function LoginFail(){
 		$this->login();
 
@@ -100,7 +91,7 @@ class SachController extends CI_Controller
 
 			$this->SachModel->Insert_User($data);
 			redirect(base_url()."sachController/inserted");
-		}
+		
 			$this->signup();
 		
 	}
@@ -118,6 +109,13 @@ class SachController extends CI_Controller
 		$this->load->model("SachModel");
 		$data=$this->SachModel->GetProduct();
 		$this->load->view("admin/product",['data'=>$data]);
+	}
+
+	function Product_id() {
+		$id = $this->uri->segment(3);
+		$this->load->model('Model_Form');
+		$row=$this->Model_Form->product_id($id);
+		echo json_encode($row);
 	}
 
 
@@ -219,6 +217,8 @@ class SachController extends CI_Controller
 			$this->Updateproduct();
 	}
 
+
+
 		function Insert_Product() {
 			$this->load->model('Model_Form');
 			$data = array(
@@ -248,6 +248,37 @@ class SachController extends CI_Controller
 						$this->Products();
 
 				}
+
+				function Update_Product() {
+					$this->load->model('Model_Form');
+					$data = array(
+						'name'=>$this->input->post('name_product'),
+						'description'=>$this->input->post('description'),
+						'unit_price'=>$this->input->post('unit_price'),
+						'promotion_price'=>$this->input->post('promotion_price'),
+						'unit'=>$this->input->post('unit'),
+						'image'=>$this->upload_image()
+					);
+
+					$message = $this->Model_Form->Update_Product($this->input->post('id_product'),$data);
+					echo json_encode($message);
+					redirect(base_url(). "SachController/Products");
+				}
+
+			function save_product()
+			{
+				$this->load->model("Model_Form");
+					$data = array(
+						'id'=>$this->input->post('cat_id'),
+						'name'=>$this->input->post('cat_name'),
+						'description'=>$this->input->post('description'),
+							
+					);
+					$message = $this->Model_Form->update_catory($this->input->post('cat_id'), $data);
+
+					echo json_encode($message);
+			}
+
 
 		
 
@@ -291,23 +322,23 @@ class SachController extends CI_Controller
 	}
 
 	function save_catory()
-{
-	$this->load->model("SachModel");
-	$data = array(
-		'id'=>$this->input->post('cat_id'),
-		'name'=>$this->input->post('cat_name'),
-		'description'=>$this->input->post('description'),
-		
-	);
-	$message = $this->SachModel->update_catory($this->input->post('cat_id'), $data);
+	{
+		$this->load->model("SachModel");
+		$data = array(
+			'id'=>$this->input->post('cat_id'),
+			'name'=>$this->input->post('cat_name'),
+			'description'=>$this->input->post('description'),
+			
+		);
+		$message = $this->SachModel->update_catory($this->input->post('cat_id'), $data);
 
-	echo json_encode($message);
-}
+		echo json_encode($message);
+	}
 
  function delete_Catory() {
 		$id = $this->uri->segment(3);
 		$this->load->model("SachModel");
-		if($this->SachModel->delete_Catory($id))
+		if($this->SachModel->delete_Catory($iHd))
 			$message = "delete catory susscess";	
 		
 		else{

@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -7,7 +6,7 @@
 	<title>WebShopSach</title>
 	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/vendors/colorbox/example3/colorbox.css">
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/rs-plugin/css/settings.css">
@@ -16,6 +15,8 @@
 	<link rel="stylesheet" href="<?=base_url();?>assets/dest/css/animate.css">
 	<link rel="stylesheet" title="style" href="<?=base_url();?>assets/dest/css/huong-style.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/dest/css/my_style.css">
+	<link rel="shortcut icon" type="image/png" href="<?=base_url();?>img/logo.jpg">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 </head>
 <body>
 
@@ -30,26 +31,9 @@
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-				
-
-					<?php
-					 if ($this->session->userdata('logged_in') != TRUE)
-					 {
-					 	?>
-						<li><a href='<?php echo base_url()?>SachController/signup'>Đăng kí</a></li>
-						<li><a href='<?php echo base_url()?>SachController/Login'>Đăng nhập</a></li>		
-						<?php	
-						}
-							else
-							{
-							?>	
-							 <li><a href='#'><i class='fa fa-user'></i><?php echo $_SESSION['full_name'] ?></a></li>
-							 <li><a href='<?php echo base_url()?>SachController/logout'>Logout</a></li>
-							<?php
-							}
-						 ?>
-						
-							
+						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
+						<li><a href="<?=base_url();?>Index/Login">Đăng kí</a></li>
+						<li><a href="<?=base_url();?>Index/Signup">Đăng nhập</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -136,7 +120,7 @@
 								<li><a href="product_type.html">Sản phẩm 4</a></li>
 							</ul>
 						</li>
-						<li><a href="about.html">Giới thiệu</a></li>
+						<li><a href="<?=base_url();?>Index/About">About</a></li>
 						<li><a href="contacts.html">Liên hệ</a></li>
 					</ul>
 					<div class="clearfix"></div>
