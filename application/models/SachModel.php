@@ -60,8 +60,8 @@ public function GetAlCustomer()
 		$data = $this->db->query("SELECT * FROM products WHERE id = '$id'");
 		return $data->result_array();
 	}
-	public function Login($email,$password){
-		$this->db->where('email',$email);
+	public function Login($username,$password){
+		$this->db->where('username',$username);
 		$this->db->where('password',$password);
 		$reuslt =$this->db->get('users');
 		return $reuslt;
@@ -85,6 +85,12 @@ public function GetAlCustomer()
 		$data=$this->db->get("slide",4);
             return $data->result();
 		
+	}
+	public function Liked($username){
+		$data=$this->db->query('SELECT * from users where username Like "%$username%"');
+		 return $data;
+		
+
 	}
 	public function Insert_User($data) {
 		$this->db->insert("users",$data);

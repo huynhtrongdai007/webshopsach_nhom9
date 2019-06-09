@@ -41,6 +41,7 @@ class SachController extends CI_Controller
 		$this->load->model("SachModel");
 		$row = $this->SachModel->detail_users($id);
 		echo json_encode($row);
+
 }
 	public function login()
 	{
@@ -48,6 +49,21 @@ class SachController extends CI_Controller
 	}
 	public function Process()
 	{
+
+
+
+
+	public function Process(){
+		$username=$this->input->post('username',TRUE);
+    	$password= $this->input->post('password',TRUE);
+    	$this->load->model('SachModel');
+
+    	$validate = $this->SachModel->Login($username,$password);
+    	//print_r($validate);
+			//echo "0000";
+
+	 function Process(){
+
 
 
 	
@@ -58,15 +74,16 @@ class SachController extends CI_Controller
 
     	$validate = $this->SachModel->Login($email,$password);
 
+
 		 	if($validate->num_rows() > 0)
     		{
 		        $data  = $validate->row_array();
 		        $name  = $data['full_name'];
-		        $email = $data['email'];
+		        $username = $data['email'];
 		        $level = $data['level'];
 		        $sesdata = array(
 		       		'full_name' =>$name,
-		            'email'  => $email,
+		            'username'  => $username,
 		            'level'     => $level,
 		            'logged_in' => TRUE
 		            
@@ -124,9 +141,47 @@ class SachController extends CI_Controller
 
 		);
 
+
+	public function Form_validation() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules("email", "Email" ,"required","unique");
+		$this->form_validation->set_rules("username","Username","required");
+		$this->form_validation->set_rules("full_name", "FullName" ,"required");
+		$this->form_validation->set_rules("address", "Address" ,"required");
+		$this->form_validation->set_rules("phone", "Phone" ,"required");
+		$this->form_validation->set_rules("password", "Password" ,"required");
+
+		$this->load->model('SachModel');
+		$username = $this->input->post('username');
+		$query = $this->SachModel->Liked($username);
+		if ($query->num_rows()>0) {
+			
+			
+			
+			redirect(base_url()."sachController/inserted");
+		}else{
+			$data = array(
+				'email'=> $this->input->post('email'),
+				'full_name'=> $this->input->post('full_name'),
+				'username'=>$this->input->post('username'),
+				'address'=> $this->input->post('address'),
+				'phone'=> $this->input->post('phone'),
+				'password'=> $this->input->post('password')
+
+			);
+			$this->SachModel->Insert_User($data);
+			redirect(base_url()."sachController/inserted");
+
 		$message = $this->SachModel->update_user($this->input->post('user_id'), $data);
 
 		echo json_encode($message);
+
+			$this->SachModel->Insert_User($data);
+			redirect(base_url()."sachController/inserted");
+		}	{
+
+			$this->signup();
+		}
 
 	}
 	public function delete_datauser() {
