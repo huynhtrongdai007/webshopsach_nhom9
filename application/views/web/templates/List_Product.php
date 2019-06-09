@@ -1,6 +1,4 @@
-
-						<div class="space50">&nbsp;</div>
-
+					<div class="space50">&nbsp;</div>
 						<div class="beta-products-list">
 							<h4>Top Products</h4>
 							<div class="beta-products-details">
@@ -33,8 +31,20 @@
 						</div> <!-- .beta-products-list -->
 					</div>
 				</div> <!-- end section with sidebar and main content -->
-
-
 			</div> <!-- .main-content -->
 		</div> <!-- #content -->
 	</div> <!-- .container -->
+				</div>
+				<div class="card">
+					<p class="card-text"><?=$value->name?></p>
+					<p>Gía: <?=$value->unit_price?> vnđ</p>
+					<button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
+
+					<button type="button" class="btn btn-primary">Mua</button>
+				</div>
+			</div>
+			<?php 
+				endforeach;
+			 ?> 
+	</div>
+</div>

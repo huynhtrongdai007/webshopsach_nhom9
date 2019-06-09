@@ -21,13 +21,18 @@
 					<div class="col-sm-6">
 						<h4>Đăng kí</h4>
 						<div class="space20">&nbsp;</div>
+						
+						<div class="form-block">
+							<label for="your_last_name">Username*</label>
+							<input type="text" name="username" id="your_last_name" required>
+						</div>
+						<div class="form-block">
+							<label for="your_last_name">Full Name*</label>
+							<input type="text" name="full_name" id="your_last_name" required>
+						</div>
 						<div class="form-block">
 							<label for="email">Email address*</label>
 							<input type="email" name="email" id="email" required>
-						</div>
-						<div class="form-block">
-							<label for="your_last_name">Username*</label>
-							<input type="text" name="full_name" id="your_last_name" required>
 						</div>
 						<div class="form-block">
 							<label for="adress">Address*</label>

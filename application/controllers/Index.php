@@ -11,6 +11,7 @@ class Index extends CI_Controller
 		$data=$this->SachModel->GetProduct();
 		$newproduct=$this->SachModel->NewProduct();
 		$this->load->view('web/index',['header'=>'web/templates/header','List_Product'=>'web/templates/List_Product','data'=>$data,'New_Product'=>'web/templates/New_Product','newproduct'=>$newproduct,'slider'=>'web/templates/slider','footer'=>'web/templates/footer']);
+		$this->load->view('web/index',['header'=>'web/templates/header','slide'=>'web/templates/slide','List_Product'=>'web/templates/List_Product','data'=>$data,'New_Product'=>'web/templates/New_Product','newproduct'=>$newproduct]);
 	}
 
 		public function About() {

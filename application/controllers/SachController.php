@@ -7,10 +7,33 @@ class SachController extends CI_Controller
   	 function Admin() {
 		$this->load->view("admin/index");
 	}   
-	 function User() {
+		 
+		 function quanliadmin()
+	{
+		$this->load->model("SachModel");
+		$data = $this->SachModel->GetAlCustomer();
+		$this->load->view("admin/quanliadmin",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
+	}
+	public function delete_dataadmin() {
+		$id = $this->uri->segment(3);
+		$this->load->model("SachModel");
+		$this->SachModel->delete_user($id);
+		redirect(base_url(). "sachController/quanliadmin"); 
+	}
+	public function User() {
 		$this->load->model("SachModel");
 		$data = $this->SachModel->GetAllUser();
+
 		$this->load->view("admin/user",['data'=>$data,'modelFormUser'=>'admin/templates/modelFormUser']);
+	}
+
+	public function product_type()
+	{
+		$this->load->model("SachModel");
+		$dataprodut=$this->SachModel->GetProduct();
+		$data=$this->SachModel->GetProduct_type();
+		$newproduct=$this->SachModel->NewProducttype();
+		$this->load->view("web/product_type",['header'=>'web/templates/header','NewProducttype'=>'web/templates/New_product','footer'=>'web/templates/footer','newproduct'=>$newproduct,'data'=>$data,'Caory'=>'web/templates/Catarory_produts','dataprodut'=>$dataprodut]);
 	}
 
 	function detail_user($id)
@@ -21,6 +44,30 @@ class SachController extends CI_Controller
 
 	}
 		 function Process(){
+}
+	public function login()
+	{
+		$this->load->view('web/login',['header'=>'web/templates/header']);
+	}
+	public function Process()
+	{
+
+
+
+
+	public function Process(){
+		$username=$this->input->post('username',TRUE);
+    	$password= $this->input->post('password',TRUE);
+    	$this->load->model('SachModel');
+
+    	$validate = $this->SachModel->Login($username,$password);
+    
+
+	 function Process(){
+
+
+
+	
 
 		$email=$this->input->post('username',TRUE);
     	$password= $this->input->post('password',TRUE);
@@ -28,15 +75,16 @@ class SachController extends CI_Controller
 
     	$validate = $this->SachModel->Login($email,$password);
 
+
 		 	if($validate->num_rows() > 0)
     		{
 		        $data  = $validate->row_array();
 		        $name  = $data['full_name'];
-		        $email = $data['email'];
+		        $username = $data['email'];
 		        $level = $data['level'];
 		        $sesdata = array(
 		       		'full_name' =>$name,
-		            'email'  => $email,
+		            'username'  => $username,
 		            'level'     => $level,
 		            'logged_in' => TRUE
 		            
@@ -49,7 +97,6 @@ class SachController extends CI_Controller
 		        {
 		            redirect(base_url().'SachController/Admin');
 		 
-		        // access login for author
 		        }else
 		        {
 
@@ -69,6 +116,10 @@ class SachController extends CI_Controller
 	}
 
 	 function LoginFail(){
+
+
+	
+	function LoginFail(){
 		$this->login();
 
 	}
@@ -85,6 +136,37 @@ class SachController extends CI_Controller
 
 		);
 
+
+	public function Form_validation() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules("email", "Email" ,"required","unique");
+		$this->form_validation->set_rules("username","Username","required");
+		$this->form_validation->set_rules("full_name", "FullName" ,"required");
+		$this->form_validation->set_rules("address", "Address" ,"required");
+		$this->form_validation->set_rules("phone", "Phone" ,"required");
+		$this->form_validation->set_rules("password", "Password" ,"required");
+
+		$this->load->model('SachModel');
+		$username = $this->input->post('username');
+		$query = $this->SachModel->Liked($username);
+		if ($query->num_rows()>0) {
+			
+			
+			
+			redirect(base_url()."sachController/inserted");
+		}else{
+			$data = array(
+				'email'=> $this->input->post('email'),
+				'full_name'=> $this->input->post('full_name'),
+				'username'=>$this->input->post('username'),
+				'address'=> $this->input->post('address'),
+				'phone'=> $this->input->post('phone'),
+				'password'=> $this->input->post('password')
+
+			);
+			$this->SachModel->Insert_User($data);
+			redirect(base_url()."sachController/inserted");
+
 		$message = $this->SachModel->update_user($this->input->post('user_id'), $data);
 
 		echo json_encode($message);
@@ -94,6 +176,12 @@ class SachController extends CI_Controller
 		
 			$this->signup();
 		
+
+		}	{
+
+			$this->signup();
+		}
+
 	}
 	 function delete_datauser() {
 		// $id=$_GET["id"];
@@ -102,6 +190,7 @@ class SachController extends CI_Controller
 		$this->SachModel->delete_user($id);
 		redirect(base_url(). "sachController/User"); 
 	}
+
 
 	
 

@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 </head>
 <body>
-
 	<div id="header">
 		<div class="header-top">
 			<div class="container">
@@ -115,7 +114,7 @@
 						<li><a href="index.html">Trang chủ</a></li>
 						<li><a href="#">Sản phẩm</a>
 							<ul class="sub-menu">
-								<li><a href="product_type.html">Sản phẩm 1</a></li>
+								<li><a href="<?php echo base_url()?>SachController/product_type">Sản phẩm 1</a></li>
 								<li><a href="product_type.html">Sản phẩm 2</a></li>
 								<li><a href="product_type.html">Sản phẩm 4</a></li>
 							</ul>

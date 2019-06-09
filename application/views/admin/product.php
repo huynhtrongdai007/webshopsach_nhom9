@@ -1,9 +1,10 @@
 <?php 
     include'templates/header.php';
+
     include'templates/Modal_Product.php';
  ?>
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
 <h1 class="text-center display-4 color-tim">Danh Sách Sản Phẩm</h1>
 <hr class="w-50 bg-primary">
 <div class="ml-auto"><button type="button" class="btn btn-primary MainNavText" data-toggle="modal" data-target="#productModal" id="MainNavHelp">Add-product</button></div>
@@ -21,6 +22,22 @@
         <th>Hình ảnh</th>
         <th>Update</th>
         <th>Delete</th>
+
+    <table class="table table-dark table-hover table-striped" id="users">
+    <thead class="name" >
+        <th style="font-size: 15px">STT</th>
+        <th style="font-size: 15px">ID</th>
+        <th style="font-size: 15px">Tên Sách</th>
+        <th style="font-size: 15px">Mô tả</th>
+        <th style="font-size: 15px">giá</th>
+        <th style="font-size: 15px"> Giảm giá </th>
+        <th style="font-size: 15px">Hình ảnh</th>
+        <th style="font-size: 15px">
+            <button><a href="<?=base_url();?>sachController/addProduct">add</a></button>
+        </th>
+
+    </thead>
+
     <tbody>
          <?php $stt=1; ?>
         <?php foreach ($data as $product):?>
@@ -57,10 +74,10 @@
 
 
 
+
 <script type="text/javascript" language="javascript">
         var base_url = "<?php echo base_url() ?>";
 
-    /*them san pham*/
     $('#productModal').on('shown.bs.modal', function (event) {
                 var button = $(event.relatedTarget) ;
 
